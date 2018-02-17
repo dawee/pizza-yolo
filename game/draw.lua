@@ -12,7 +12,9 @@ local function drawAt(image, row, col, size, scaleX, scaleY)
     extract.MARGIN_TOP + size * extract.SIZE * extract.SCALE * (row - 1),
     0,
     extract.SCALE * scaleX,
-    extract.SCALE * scaleY
+    extract.SCALE * scaleY,
+    size * extract.SIZE / 2,
+    size * extract.SIZE / 2
   )
 end
 
