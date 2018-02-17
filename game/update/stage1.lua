@@ -167,9 +167,6 @@ function update.ui(state)
 end
 
 function update.hover(state)
-  -- X extract.MARGIN_LEFT + size * extract.SIZE * extract.SCALE * (col - 1),
-  -- Y extract.MARGIN_TOP + size * extract.SIZE * extract.SCALE * (row - 1),
-  -- SIZE extract.SCALE
   local mouseX, mouseY = love.mouse.getPosition()
   local tileSize =  extract.SIZE * extract.SCALE
   mouseX = mouseX - extract.MARGIN_LEFT + tileSize / 2

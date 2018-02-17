@@ -63,4 +63,21 @@ function extract.mobScreenState(mob)
   }
 end
 
+function extract.selectedTower(towers)
+  for _, tower in pairs(towers) do
+    if tower.selected then
+      return tower
+    end
+  end
+end
+
+function extract.isTower(tile, candles)
+  for _, candle in pairs(candles) do
+    if candle.tile.row == tile.row and candle.tile.col == tile.col then
+      return true
+    end
+  end
+  return false
+end
+
 return extract

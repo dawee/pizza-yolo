@@ -19,6 +19,7 @@ local function drawAt(image, row, col, size, scaleX, scaleY)
 end
 
 function draw.tiles(graphics, state)
+  love.graphics.setColor(255, 255, 255, 255)
   for row, tilesRow in ipairs(state.map.tiles) do
     for col, tileType in ipairs(tilesRow) do
       local image = (tileType == path.PATH_TYPE)
@@ -60,6 +61,7 @@ function draw.mob(graphics, mob)
 end
 
 function draw.mobs(graphics, state)
+  love.graphics.setColor(255, 255, 255, 255)
   for __, mob in pairs(state.mobs) do
     if mob.lives > 0 then
       draw.mob(graphics, mob)
@@ -77,12 +79,12 @@ function draw.bullets(graphics, bullets)
         extract.MARGIN_TOP + extract.SIZE * extract.SCALE * (bullet.tile.row - 1) + extract.SCALE,
         8, 8
       )
-      love.graphics.setColor(255, 255, 255, 255)
     end
   end
 end
 
 function draw.candles(graphics, state)
+  love.graphics.setColor(255, 255, 255, 255)
   for __, candle in pairs(state.candles) do
     local image = graphics.candle[1]
 
@@ -98,6 +100,7 @@ function draw.candles(graphics, state)
 end
 
 function draw.pizza(graphics, state)
+  love.graphics.setColor(255, 255, 255, 255)
   local pizza = state.pizza
   for _, slice in pairs(pizza.slices) do
     local image = graphics.pizza[slice]
@@ -140,9 +143,21 @@ function draw.ui(graphics, state)
 end
 
 function draw.hover(graphics, state)
+  local tower = extract.selectedTower(state.ui.towers)
+  if tower == nil then
+    return state.hover
+  end
   if state.hover.row > 0 and state.hover.row <= #state.map.tiles then
     if state.hover.col > 0 and state.hover.col <= #state.map.tiles[1] then
-      love.graphics.setColor(0, 0, 0, 255)
+      love.graphics.setColor(0, 255, 0, 255)
+
+      local isPath = state.map.tiles[state.hover.row][state.hover.col] == path.PATH_TYPE
+      local isTower = extract.isTower(state.hover, state.candles)
+
+      if isPath or isTower then
+        love.graphics.setColor(255, 0, 0, 255)
+      end
+
       love.graphics.rectangle(
         'line',
         extract.MARGIN_LEFT + extract.SIZE * extract.SCALE * (state.hover.col - 1) - extract.SIZE * extract.SCALE / 2,
@@ -152,7 +167,6 @@ function draw.hover(graphics, state)
       )
     end
   end
-  love.graphics.setColor(255, 255, 255, 255)
 end
 
 function draw.all(graphics, state)
