@@ -35,7 +35,9 @@ function suite.tests.update2(it)
     local mob = update.mob(mob1Fixture, {map = map1Fixture}, 1)
 
     return assert.all(
-      assert.is(mob.tile.row, 2)
+      assert.is(mob.tile.row, 2),
+      assert.is(mob.tile.col, 3),
+      assert.is(#mob.seenTiles, 1)
     )
   end
 

@@ -26,8 +26,7 @@ function update.mob(mob, state, dt)
   local seenTiles = mob.seenTiles
 
   if (offset.row == 0) and (offset.col == 0) then
-    local seenTiles = {unpack(seenTiles)}
-
+    seenTiles = {unpack(seenTiles)}
     seenTiles[#seenTiles + 1] = mob.tile
     nextTile = path.findNextTile(mob, state.map)
     offset = {
