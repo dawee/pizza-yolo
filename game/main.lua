@@ -7,29 +7,31 @@ local game = {
   graphics = {},
   state = {
     candles = {
-      {        
-        radius = 2,
+      {
+        radius = 1,
         burn = {
           velocity = 2,
           cursor = 0
         },
         shoot = {
-          velocity = 10,
+          velocity = 5,
           cursor = 0
         },
+        bulletVelocity = 1,
         bullets = {},
         tile = {row = 2, col = 2}
       },
       {
-        radius = 2,
+        radius = 1,
         burn = {
           velocity = 2,
           cursor = 0.5
         },
         shoot = {
-          velocity = 10,
+          velocity = 5,
           cursor = 0
         },
+        bulletVelocity = 1,
         bullets = {},
         tile = {row = 4, col = 8}
       }

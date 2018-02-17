@@ -66,6 +66,19 @@ function draw.mobs(graphics, state)
   end
 end
 
+function draw.bullets(graphics, bullets)
+  for __, bullet in pairs(bullets) do
+    love.graphics.setColor(255, 0, 0, 255)
+    love.graphics.rectangle(
+      'fill',
+      draw.MARGIN_LEFT + draw.SIZE * draw.SCALE * (bullet.tile.col - 1),
+      draw.MARGIN_TOP + draw.SIZE * draw.SCALE * (bullet.tile.row - 1),
+      2, 2
+    )
+    love.graphics.setColor(255, 255, 255, 255)
+  end
+end
+
 function draw.candles(graphics, state)
   for __, candle in pairs(state.candles) do
     local image = graphics.candle[1]
@@ -77,13 +90,14 @@ function draw.candles(graphics, state)
     end
 
     drawAt(image, candle.tile.row, candle.tile.col, 1)
+    draw.bullets(graphics, candle.bullets)
   end
 end
 
 function draw.all(graphics, state)
   draw.tiles(graphics, state)
-  draw.candles(graphics, state)
   draw.mobs(graphics, state)
+  draw.candles(graphics, state)
 end
 
 return draw

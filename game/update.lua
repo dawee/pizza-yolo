@@ -1,12 +1,15 @@
+local extract = require('extract')
 local path = require('path')
+local shoot = require('shoot')
 
 local update = {}
 
-local function mapUpdate(updater, iteratee, state, dt)
+local function mapUpdate(updater, iteratee, ...)
+  local args = {...}
   local updated = {}
 
   for __, item in pairs(iteratee) do
-    updated[#updated + 1] = updater(item, state, dt)
+    updated[#updated + 1] = updater(item, unpack(args))
   end
 
   return updated
@@ -24,6 +27,10 @@ local function merge(defaults, values)
   end
 
   return merged
+end
+
+local function isNewCycle(animation)
+  return animation.cursor == 0
 end
 
 local function runCycle(animation, dt)
@@ -58,12 +65,66 @@ function update.mob(mob, state, dt)
   })
 end
 
-function update.candle(candle, state, dt)
-  return merge(candle, {
-    burn = runCycle(candle.burn, dt)
+function update.oneBullet(bullet, candle, state, dt)
+  local targetMob = nil
+
+  for __, mob in pairs(state.mobs) do
+    if mob.id == bullet.mobId then
+      targetMob = mob
+      break
+    end
+  end
+
+  local mobScreenState = extract.mobScreenState(targetMob)
+
+  local oppositeDistance = math.abs(mobScreenState.row - bullet.tile.row)
+  local adjacentDistance = math.abs(mobScreenState.col - bullet.tile.col)
+  local shootAngle = math.atan(oppositeDistance / adjacentDistance)
+  local moveDistance = candle.bulletVelocity * dt
+  local rowDirection = 1
+  local colDirection = 1
+
+  if mobScreenState.row < bullet.tile.row then
+    rowDirection = -1
+  end
+
+  if mobScreenState.col < bullet.tile.col then
+    colDirection = -1
+  end
+
+  return merge(bullet, {
+    tile = {
+      row = bullet.tile.row + moveDistance * math.sin(shootAngle) * rowDirection,
+      col = bullet.tile.col + moveDistance * math.cos(shootAngle) * colDirection
+    }
   })
 end
 
+function update.bullets(bullets, candle, state, dt)
+  local newBullets = bullets
+
+  if isNewCycle(candle.shoot) then
+    local mobsIds = shoot.findMobsNearTower(candle, state)
+
+    if #mobsIds > 0 then
+      newBullets = {unpack(bullets)}
+      newBullets[#newBullets + 1] = {
+        tile = {row = candle.tile.row, col = candle.tile.col},
+        mobId = mobsIds[1]
+      }
+    end
+  end
+
+  return mapUpdate(update.oneBullet, newBullets, candle, state, dt)
+end
+
+function update.candle(candle, state, dt)
+  return merge(candle, {
+    burn = runCycle(candle.burn, dt),
+    shoot = runCycle(candle.shoot, dt),
+    bullets = update.bullets(candle.bullets, candle, state, dt)
+  })
+end
 
 function update.all(state, dt)
   return merge(state, {
