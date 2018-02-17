@@ -69,14 +69,16 @@ end
 
 function draw.bullets(graphics, bullets)
   for __, bullet in pairs(bullets) do
-    love.graphics.setColor(255, 0, 0, 255)
-    love.graphics.rectangle(
-      'fill',
-      draw.MARGIN_LEFT + draw.SIZE * draw.SCALE * (bullet.tile.col - 1),
-      draw.MARGIN_TOP + draw.SIZE * draw.SCALE * (bullet.tile.row - 1),
-      2, 2
-    )
-    love.graphics.setColor(255, 255, 255, 255)
+    if not bullet.touched then
+      love.graphics.setColor(172, 50, 50, 255)
+      love.graphics.rectangle(
+        'fill',
+        draw.MARGIN_LEFT + draw.SIZE * draw.SCALE * (bullet.tile.col - 1) + draw.SCALE,
+        draw.MARGIN_TOP + draw.SIZE * draw.SCALE * (bullet.tile.row - 1) + draw.SCALE,
+        8, 8
+      )
+      love.graphics.setColor(255, 255, 255, 255)
+    end
   end
 end
 

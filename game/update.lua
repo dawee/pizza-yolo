@@ -72,6 +72,10 @@ function update.mob(mob, state, dt)
 end
 
 function update.oneBullet(bullet, candle, state, dt)
+  if bullet.touched then
+    return bullet
+  end
+
   local targetMob = nil
 
   for __, mob in pairs(state.mobs) do
@@ -99,6 +103,7 @@ function update.oneBullet(bullet, candle, state, dt)
   end
 
   return merge(bullet, {
+    touched = (oppositeDistance < 0.05) and (adjacentDistance < 0.05),
     tile = {
       row = bullet.tile.row + moveDistance * math.sin(shootAngle) * rowDirection,
       col = bullet.tile.col + moveDistance * math.cos(shootAngle) * colDirection
@@ -115,6 +120,7 @@ function update.bullets(bullets, candle, state, dt)
     if #mobsIds > 0 then
       newBullets = {unpack(bullets)}
       newBullets[#newBullets + 1] = {
+        touched = false,
         tile = {row = candle.tile.row, col = candle.tile.col},
         mobId = mobsIds[1]
       }

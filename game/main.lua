@@ -14,10 +14,10 @@ local game = {
           cursor = 0
         },
         shoot = {
-          velocity = 5,
+          velocity = 2.5,
           cursor = 0
         },
-        bulletVelocity = 1,
+        bulletVelocity = 5,
         bullets = {},
         tile = {row = 2, col = 2}
       },
@@ -28,10 +28,10 @@ local game = {
           cursor = 0.5
         },
         shoot = {
-          velocity = 5,
+          velocity = 2.5,
           cursor = 0
         },
-        bulletVelocity = 1,
+        bulletVelocity = 5,
         bullets = {},
         tile = {row = 4, col = 8}
       }
