@@ -24,7 +24,7 @@ local game = {
     },
     mobs = {
       {
-        velocity = 1,
+        velocity = 0.8,
         previousTile = {row = 0, col = 3},
         tile = {row = 1, col = 3},
         cursor = 0,
