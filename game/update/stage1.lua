@@ -21,6 +21,10 @@ local function runCycle(animation, dt)
 end
 
 function update.mob(mob, state, dt)
+  if mob.lives == 0 then
+    return mob
+  end
+
   local cursor = mob.cursor + mob.velocity * dt
   local previousTile = mob.previousTile
   local nextTile = mob.tile
