@@ -1,17 +1,18 @@
 local path = require('path')
+local animation = require('animation')
 
 local draw = {}
 
 draw.SCALE = 8
-draw.SIZE = 16
+draw.SIZE = 8
 draw.MARGIN_TOP = 50
 draw.MARGIN_LEFT = 50
 
 local function drawAt(image, row, col, size)
   love.graphics.draw(
     image,
-    draw.MARGIN_LEFT + size * draw.SIZE * draw.SCALE * (col - 1) / 2,
-    draw.MARGIN_TOP + size * draw.SIZE * draw.SCALE * (row - 1) / 2,
+    draw.MARGIN_LEFT + size * draw.SIZE * draw.SCALE * (col - 1),
+    draw.MARGIN_TOP + size * draw.SIZE * draw.SCALE * (row - 1),
     0,
     draw.SCALE,
     draw.SCALE
@@ -32,12 +33,16 @@ end
 
 function draw.mobs(graphics, state)
   for __, mob in pairs(state.mobs) do
-    drawAt(
-      graphics.mozza.front[1],
-      mob.previousTile.row + (mob.tile.row - mob.previousTile.row) * mob.cursor,
-      mob.previousTile.col + (mob.tile.col - mob.previousTile.col) * mob.cursor,
-      1
-    )
+    local row, col = animation.bump(mob.previousTile, mob.tile, mob.cursor)
+    local image = graphics.mozza.front[1]
+
+    if mob.cursor > 0.2 and mob.cursor < 0.4 then
+      image = graphics.mozza.front[2]
+    elseif mob.cursor >= 0.6 then
+      image = graphics.mozza.front[3]
+    end
+
+    drawAt(image, row, col, 1)
   end
 end
 

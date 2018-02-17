@@ -38,7 +38,9 @@ function love.load()
   game.graphics.tileWall = love.graphics.newImage('asset/tile-wall.png')
   game.graphics.mozza = {
     front = {
-      love.graphics.newImage('asset/mozza/mozza-front1.png')
+      love.graphics.newImage('asset/mozza/mozza-front1.png'),
+      love.graphics.newImage('asset/mozza/mozza-front2.png'),
+      love.graphics.newImage('asset/mozza/mozza-front3.png')
     }
   }
 end

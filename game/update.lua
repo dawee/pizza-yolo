@@ -26,24 +26,6 @@ local function merge(defaults, values)
   return merged
 end
 
-function update.capZero(previousValue, nextValue)
-  local isNotCrossingZero = (previousValue > 0 and nextValue > 0)
-    or (previousValue < 0 and nextValue < 0)
-
-  if isNotCrossingZero then
-    return nextValue
-  end
-
-  return 0
-end
-
-function update.computeNewOffset(offset, velocity, dt)
-  return {
-    row = update.capZero(offset.row, offset.row - offset.row * velocity * dt),
-    col = update.capZero(offset.col, offset.col - offset.col * velocity * dt)
-  }
-end
-
 function update.mob(mob, state, dt)
   local cursor = mob.cursor + mob.velocity * dt
   local previousTile = mob.previousTile
