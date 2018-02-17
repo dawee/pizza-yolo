@@ -94,8 +94,17 @@ function draw.candles(graphics, state)
   end
 end
 
+function draw.pizza(graphics, state)
+  local pizza = state.pizza
+  for _, slice in pairs(pizza.slices) do
+    local image = graphics.pizza[slice]
+    drawAt(image, pizza.tile.row - 0.5, pizza.tile.col - 0.5, 1)
+  end
+end
+
 function draw.all(graphics, state)
   draw.tiles(graphics, state)
+  draw.pizza(graphics, state)
   draw.mobs(graphics, state)
   draw.candles(graphics, state)
 end
