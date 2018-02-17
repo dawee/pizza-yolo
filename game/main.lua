@@ -61,6 +61,15 @@ local game = {
         {'W', '_', 'W', 'W', 'W', 'W', 'W', 'W'},
         {'W', '_', 'W', 'W', 'W', 'W', 'W', 'W'},
       }
+    },
+    ui = {
+      towers = {
+        {
+          type = 'candle',
+          available = true,
+          selected = false
+        }
+      }
     }
   }
 }
@@ -108,6 +117,13 @@ function love.load()
     love.graphics.newImage('asset/pizza/pizza6.png'),
     love.graphics.newImage('asset/pizza/pizza7.png'),
     love.graphics.newImage('asset/pizza/pizza8.png')
+  }
+
+  game.graphics.ui = {
+    button = {
+      love.graphics.newImage('asset/button.png'),
+      love.graphics.newImage('asset/button-selected.png')
+    }
   }
 end
 

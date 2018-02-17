@@ -7,6 +7,7 @@ draw.SCALE = 8
 draw.SIZE = 8
 draw.MARGIN_TOP = 50
 draw.MARGIN_LEFT = 50
+draw.UI_SCALE = 4
 
 local function drawAt(image, row, col, size, scaleX, scaleY)
   scaleX = scaleX or 1
@@ -102,11 +103,46 @@ function draw.pizza(graphics, state)
   end
 end
 
+function draw.ui(graphics, state)
+  love.graphics.setColor(227, 227, 227, 255)
+  love.graphics.rectangle(
+    'fill',
+    love.graphics.getWidth() - (20 * draw.UI_SCALE),
+    0,
+    (20 * draw.UI_SCALE),
+    love.graphics.getHeight()
+  )
+
+  for i, button in pairs(state.ui.towers) do
+    local image = graphics.ui.button[1]
+    if button.selected then
+      image = graphics.ui.button[2]
+    end
+    love.graphics.draw(
+      image,
+      love.graphics.getWidth() - (18 * draw.UI_SCALE),
+      (18 * draw.UI_SCALE) * (i - 1) + (2 * draw.UI_SCALE),
+      0,
+      draw.UI_SCALE,
+      draw.UI_SCALE
+    )
+    love.graphics.draw(
+      graphics[button.type][1],
+      love.graphics.getWidth() - (14 * draw.UI_SCALE),
+      (18 * draw.UI_SCALE) * (i - 1) + (2 * draw.UI_SCALE),
+      0,
+      draw.UI_SCALE,
+      draw.UI_SCALE
+    )
+  end
+end
+
 function draw.all(graphics, state)
   draw.tiles(graphics, state)
   draw.pizza(graphics, state)
   draw.mobs(graphics, state)
   draw.candles(graphics, state)
+  draw.ui(graphics, state)
 end
 
 return draw
