@@ -1,4 +1,5 @@
 local stage1 = require('update.stage1')
+local stage2 = require('update.stage2')
 
 function pipe(...)
   local funcs = {...}
@@ -15,5 +16,5 @@ function pipe(...)
 end
 
 return {
-  all = pipe(stage1.all)
+  all = pipe(stage1.all, stage2.all)
 }

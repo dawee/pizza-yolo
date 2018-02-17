@@ -1,33 +1,10 @@
 local extract = require('extract')
 local path = require('path')
 local shoot = require('shoot')
+local mapUpdate = require('update.mapupdate')
+local merge = require('update.merge')
 
 local update = {}
-
-local function mapUpdate(updater, iteratee, ...)
-  local args = {...}
-  local updated = {}
-
-  for __, item in pairs(iteratee) do
-    updated[#updated + 1] = updater(item, unpack(args))
-  end
-
-  return updated
-end
-
-local function merge(defaults, values)
-  local merged = {}
-
-  for key, value in pairs(defaults) do
-    merged[key] = value
-  end
-
-  for key, value in pairs(values) do
-    merged[key] = value
-  end
-
-  return merged
-end
 
 local function isNewCycle(animation)
   return animation.cursor == 0

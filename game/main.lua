@@ -39,6 +39,7 @@ local game = {
     mobs = {
       {
         id = 1,
+        lives = 6,
         velocity = 0.8,
         previousTile = {row = 0, col = 3},
         tile = {row = 1, col = 3},
