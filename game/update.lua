@@ -41,6 +41,7 @@ function update.mob(mob, state, dt)
   local previousTile = mob.previousTile
   local nextTile = mob.tile
   local seenTiles = mob.seenTiles
+  local ate = mob.ate
 
   if cursor >= 1 then
     seenTiles = {unpack(seenTiles)}
@@ -50,11 +51,16 @@ function update.mob(mob, state, dt)
     cursor = 0
   end
 
+  if previousTile.row == state.pizza.tile.row and previousTile.col == state.pizza.tile.col then
+    ate = true
+  end
+
   return merge(mob, {
     previousTile = previousTile,
     tile = nextTile,
     cursor = cursor,
-    seenTiles = seenTiles
+    seenTiles = seenTiles,
+    ate = ate
   })
 end
 
@@ -64,11 +70,35 @@ function update.candle(candle, state, dt)
   })
 end
 
+function update.pizza(state)
+  local eatenSlices = 0
+  for _, mob in pairs(state.mobs) do
+    if mob.ate then
+      eatenSlices = eatenSlices + 1
+    end
+  end
+
+  local remainingSlices = 8 - eatenSlices
+
+  if #state.pizza.slices == remainingSlices then
+    return state.pizza
+  end
+
+  local slices = {unpack(state.pizza.slices)}
+  while #slices > remainingSlices do
+    table.remove(slices, math.random(#slices))
+  end
+
+  return merge(state.pizza, {
+    slices = slices
+  })
+end
 
 function update.all(state, dt)
   return merge(state, {
     candles = mapUpdate(update.candle, state.candles, state, dt),
-    mobs = mapUpdate(update.mob, state.mobs, state, dt)
+    mobs = mapUpdate(update.mob, state.mobs, state, dt),
+    pizza = update.pizza(state)
   })
 end
 

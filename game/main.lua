@@ -30,7 +30,8 @@ local game = {
         previousTile = {row = 0, col = 3},
         tile = {row = 1, col = 3},
         cursor = 0,
-        seenTiles = {}
+        seenTiles = {},
+        ate = false
       }
     },
     pizza = {
