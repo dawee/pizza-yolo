@@ -1,12 +1,20 @@
 local draw = require('draw')
+local update = require('update')
 
 ----------------------------------------------------------------------------
 
 local game = {
-  graphics = {
-    images = {}
-  },
+  graphics = {},
   state = {
+    mobs = {
+      {
+        velocity = 1,
+        previousTile = {row = 0, col = 3},
+        tile = {row = 1, col = 3},
+        cursor = 0,
+        seenTiles = {}
+      }
+    },
     map = {
       tiles = {
         {'W', 'W', '_', 'W', 'W', 'W', 'W', 'W'},
@@ -22,11 +30,23 @@ local game = {
 ----------------------------------------------------------------------------
 
 function love.load()
+  -- Set defaults rendering settings
   love.graphics.setDefaultFilter('nearest', 'nearest')
-  game.graphics.images.tilePath = love.graphics.newImage('asset/tile-path.png')
-  game.graphics.images.tileWall = love.graphics.newImage('asset/tile-wall.png')
+
+  -- Load Images
+  game.graphics.tilePath = love.graphics.newImage('asset/tile-path.png')
+  game.graphics.tileWall = love.graphics.newImage('asset/tile-wall.png')
+  game.graphics.mozza = {
+    front = {
+      love.graphics.newImage('asset/mozza/mozza-front1.png')
+    }
+  }
+end
+
+function love.update(dt)
+  game.state = update.all(game.state, dt)
 end
 
 function love.draw()
-  draw.tiles(game.graphics, game.state)
+  draw.all(game.graphics, game.state)
 end

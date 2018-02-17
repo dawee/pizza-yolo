@@ -1,6 +1,7 @@
 return {
   velocity = 1,
   tile = {row = 1, col = 3},
-  offset = {row = -1, col = 0},
+  previousTile = {row = 0, col = 3},
+  cursor = 0,
   seenTiles = {}
 }

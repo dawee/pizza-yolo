@@ -2,6 +2,16 @@ local path = require('path')
 
 local update = {}
 
+local function each(updater, iteratee, state, dt)
+  local updated = {}
+
+  for __, item in pairs(iteratee) do
+    updated[#updated + 1] = updater(item, state, dt)
+  end
+
+  return updated
+end
+
 function update.capZero(previousValue, nextValue)
   local isNotCrossingZero = (previousValue > 0 and nextValue > 0)
     or (previousValue < 0 and nextValue < 0)
@@ -21,25 +31,33 @@ function update.computeNewOffset(offset, velocity, dt)
 end
 
 function update.mob(mob, state, dt)
-  local offset = update.computeNewOffset(mob.offset, mob.velocity, dt)
+  local cursor = mob.cursor + mob.velocity * dt
+  local previousTile = mob.previousTile
   local nextTile = mob.tile
   local seenTiles = mob.seenTiles
 
-  if (offset.row == 0) and (offset.col == 0) then
+  if cursor >= 1 then
     seenTiles = {unpack(seenTiles)}
     seenTiles[#seenTiles + 1] = mob.tile
     nextTile = path.findNextTile(mob, state.map)
-    offset = {
-      row = mob.tile.row - nextTile.row,
-      col = mob.tile.col - nextTile.col
-    }
+    previousTile = mob.tile
+    cursor = 0
   end
 
   return {
     velocity = mob.velocity,
+    previousTile = previousTile,
     tile = nextTile,
-    offset = offset,
+    cursor = cursor,
     seenTiles = seenTiles
+  }
+end
+
+
+function update.all(state, dt)
+  return {
+    map = state.map,
+    mobs = each(update.mob, state.mobs, state, dt)
   }
 end
 
