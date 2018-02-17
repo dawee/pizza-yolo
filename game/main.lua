@@ -74,6 +74,10 @@ local game = {
           selected = false
         }
       }
+    },
+    hover = {
+      row = 0,
+      col = 0
     }
   }
 }

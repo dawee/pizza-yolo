@@ -144,13 +144,48 @@ function update.pizza(state)
 end
 
 function update.ui(state)
-  local towers = state.ui.towers
+  local buttons = state.ui.towers
   if love.mouse.isDown(1) then
-    towers = extract.towers(towers)
+    local towers = {unpack(buttons)}
+    for i, button in pairs(buttons) do
+      towers[i].selected = false
+      local buttonPositionX = love.graphics.getWidth() - (18 * extract.UI_SCALE)
+      local buttonPositionY = (18 * extract.UI_SCALE) * (i - 1) + (2 * extract.UI_SCALE)
+
+      local mouseX, mouseY = love.mouse.getPosition()
+      if mouseX > buttonPositionX and mouseX < buttonPositionX + (16 * extract.UI_SCALE) then
+        if mouseY > buttonPositionY and mouseY < buttonPositionY + (16 * extract.UI_SCALE) then
+          towers[i].selected = true
+        end
+      end
+    end
+    return state.ui
   end
   return merge(state.ui, {
     towers = towers
   })
+end
+
+function update.hover(state)
+  -- X extract.MARGIN_LEFT + size * extract.SIZE * extract.SCALE * (col - 1),
+  -- Y extract.MARGIN_TOP + size * extract.SIZE * extract.SCALE * (row - 1),
+  -- SIZE extract.SCALE
+  local mouseX, mouseY = love.mouse.getPosition()
+  local tileSize =  extract.SIZE * extract.SCALE
+  mouseX = mouseX - extract.MARGIN_LEFT + tileSize / 2
+  mouseY = mouseY - extract.MARGIN_TOP + tileSize / 2
+  local col = math.ceil(mouseX / tileSize)
+  local row = math.ceil(mouseY / tileSize)
+
+  local hover = {
+    row = row,
+    col = col
+  }
+
+  if hover.row == state.hover.row and hover.col == state.hover.col then
+    return state.hover
+  end
+  return merge(state.hover, hover)
 end
 
 function update.all(state, dt)
@@ -158,7 +193,8 @@ function update.all(state, dt)
     candles = mapUpdate(update.candle, state.candles, state, dt),
     mobs = mapUpdate(update.mob, state.mobs, state, dt),
     pizza = update.pizza(state),
-    ui = update.ui(state)
+    ui = update.ui(state),
+    hover = update.hover(state)
   })
 end
 

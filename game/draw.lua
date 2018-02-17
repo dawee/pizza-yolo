@@ -137,8 +137,25 @@ function draw.ui(graphics, state)
   end
 end
 
+function draw.hover(graphics, state)
+  if state.hover.row > 0 and state.hover.row <= #state.map.tiles then
+    if state.hover.col > 0 and state.hover.col <= #state.map.tiles[1] then
+      love.graphics.setColor(0, 0, 0, 255)
+      love.graphics.rectangle(
+        'line',
+        extract.MARGIN_LEFT + extract.SIZE * extract.SCALE * (state.hover.col - 1) - extract.SIZE * extract.SCALE / 2,
+        extract.MARGIN_TOP + extract.SIZE * extract.SCALE * (state.hover.row - 1) - extract.SIZE * extract.SCALE / 2,
+        extract.SIZE * extract.SCALE,
+        extract.SIZE * extract.SCALE
+      )
+    end
+  end
+  love.graphics.setColor(255, 255, 255, 255)
+end
+
 function draw.all(graphics, state)
   draw.tiles(graphics, state)
+  draw.hover(graphics, state)
   draw.pizza(graphics, state)
   draw.mobs(graphics, state)
   draw.candles(graphics, state)
