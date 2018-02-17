@@ -33,12 +33,18 @@ local game = {
         seenTiles = {}
       }
     },
+    pizza = {
+      slices = {1, 2, 3, 4, 5, 6, 7, 8},
+      tile = {row = 6, col = 2}
+    },
     map = {
       tiles = {
         {'W', 'W', '_', 'W', 'W', 'W', 'W', 'W'},
         {'W', 'W', '_', '_', '_', '_', '_', 'W'},
         {'W', 'W', 'W', 'W', 'W', 'W', '_', 'W'},
         {'W', '_', '_', '_', '_', '_', '_', 'W'},
+        {'W', '_', 'W', 'W', 'W', 'W', 'W', 'W'},
+        {'W', '_', 'W', 'W', 'W', 'W', 'W', 'W'},
         {'W', '_', 'W', 'W', 'W', 'W', 'W', 'W'},
       }
     }
@@ -77,6 +83,17 @@ function love.load()
     love.graphics.newImage('asset/candle/candle1.png'),
     love.graphics.newImage('asset/candle/candle2.png'),
     love.graphics.newImage('asset/candle/candle3.png')
+  }
+
+  game.graphics.pizza = {
+    love.graphics.newImage('asset/pizza/pizza1.png'),
+    love.graphics.newImage('asset/pizza/pizza2.png'),
+    love.graphics.newImage('asset/pizza/pizza3.png'),
+    love.graphics.newImage('asset/pizza/pizza4.png'),
+    love.graphics.newImage('asset/pizza/pizza5.png'),
+    love.graphics.newImage('asset/pizza/pizza6.png'),
+    love.graphics.newImage('asset/pizza/pizza7.png'),
+    love.graphics.newImage('asset/pizza/pizza8.png')
   }
 end
 
