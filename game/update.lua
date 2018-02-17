@@ -2,7 +2,7 @@ local path = require('path')
 
 local update = {}
 
-local function each(updater, iteratee, state, dt)
+local function mapUpdate(updater, iteratee, state, dt)
   local updated = {}
 
   for __, item in pairs(iteratee) do
@@ -69,7 +69,7 @@ end
 
 function update.all(state, dt)
   return merge(state, {
-    mobs = each(update.mob, state.mobs, state, dt)
+    mobs = mapUpdate(update.mob, state.mobs, state, dt)
   })
 end
 
