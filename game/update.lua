@@ -12,6 +12,20 @@ local function each(updater, iteratee, state, dt)
   return updated
 end
 
+local function merge(defaults, values)
+  local merged = {}
+
+  for key, value in pairs(defaults) do
+    merged[key] = value
+  end
+
+  for key, value in pairs(values) do
+    merged[key] = value
+  end
+
+  return merged
+end
+
 function update.capZero(previousValue, nextValue)
   local isNotCrossingZero = (previousValue > 0 and nextValue > 0)
     or (previousValue < 0 and nextValue < 0)
@@ -44,21 +58,19 @@ function update.mob(mob, state, dt)
     cursor = 0
   end
 
-  return {
-    velocity = mob.velocity,
+  return merge(mob, {
     previousTile = previousTile,
     tile = nextTile,
     cursor = cursor,
     seenTiles = seenTiles
-  }
+  })
 end
 
 
 function update.all(state, dt)
-  return {
-    map = state.map,
+  return merge(state, {
     mobs = each(update.mob, state.mobs, state, dt)
-  }
+  })
 end
 
 return update
