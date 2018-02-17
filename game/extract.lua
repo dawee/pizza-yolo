@@ -4,8 +4,8 @@ local extract = {}
 
 extract.SCALE = 8
 extract.SIZE = 8
-extract.MARGIN_TOP = 50
-extract.MARGIN_LEFT = 50
+extract.MARGIN_TOP = 0
+extract.MARGIN_LEFT = 0
 extract.UI_SCALE = 4
 extract.UP = 'up'
 extract.FLAT = 'flat'
