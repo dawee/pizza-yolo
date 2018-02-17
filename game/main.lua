@@ -8,7 +8,7 @@ local game = {
   state = {
     candles = {
       {
-        radius = 1,
+        radius = 2,
         burn = {
           velocity = 2,
           cursor = 0
@@ -22,7 +22,7 @@ local game = {
         tile = {row = 2, col = 2}
       },
       {
-        radius = 1,
+        radius = 2,
         burn = {
           velocity = 2,
           cursor = 0.5
@@ -39,7 +39,7 @@ local game = {
     mobs = {
       {
         id = 1,
-        lives = 6,
+        lives = 8,
         velocity = 0.8,
         previousTile = {row = 0, col = 3},
         tile = {row = 1, col = 3},
