@@ -6,6 +6,22 @@ local update = require('update')
 local game = {
   graphics = {},
   state = {
+    candles = {
+      {
+        burn = {
+          velocity = 2,
+          cursor = 0
+        },
+        tile = {row = 2, col = 2}
+      },
+      {
+        burn = {
+          velocity = 2,
+          cursor = 0.5
+        },
+        tile = {row = 4, col = 8}
+      }
+    },
     mobs = {
       {
         velocity = 1,
@@ -36,12 +52,19 @@ function love.load()
   -- Load Images
   game.graphics.tilePath = love.graphics.newImage('asset/tile-path.png')
   game.graphics.tileWall = love.graphics.newImage('asset/tile-wall.png')
+
   game.graphics.mozza = {
     front = {
       love.graphics.newImage('asset/mozza/mozza-front1.png'),
       love.graphics.newImage('asset/mozza/mozza-front2.png'),
       love.graphics.newImage('asset/mozza/mozza-front3.png')
     }
+  }
+
+  game.graphics.candle = {
+    love.graphics.newImage('asset/candle/candle1.png'),
+    love.graphics.newImage('asset/candle/candle2.png'),
+    love.graphics.newImage('asset/candle/candle3.png')
   }
 end
 

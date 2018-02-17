@@ -26,6 +26,16 @@ local function merge(defaults, values)
   return merged
 end
 
+local function runCycle(animation, dt)
+  local cursor = animation.cursor + animation.velocity * dt
+
+  if cursor >= 1 then
+    cursor = 0
+  end
+
+  return merge(animation, {cursor = cursor})
+end
+
 function update.mob(mob, state, dt)
   local cursor = mob.cursor + mob.velocity * dt
   local previousTile = mob.previousTile
@@ -48,9 +58,16 @@ function update.mob(mob, state, dt)
   })
 end
 
+function update.candle(candle, state, dt)
+  return merge(candle, {
+    burn = runCycle(candle.burn, dt)
+  })
+end
+
 
 function update.all(state, dt)
   return merge(state, {
+    candles = mapUpdate(update.candle, state.candles, state, dt),
     mobs = mapUpdate(update.mob, state.mobs, state, dt)
   })
 end

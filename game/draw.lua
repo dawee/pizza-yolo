@@ -46,8 +46,23 @@ function draw.mobs(graphics, state)
   end
 end
 
+function draw.candles(graphics, state)
+  for __, candle in pairs(state.candles) do
+    local image = graphics.candle[1]
+
+    if candle.burn.cursor > 0.7 then
+      image = graphics.candle[3]
+    elseif candle.burn.cursor > 0.3 then
+      image = graphics.candle[2]
+    end
+
+    drawAt(image, candle.tile.row, candle.tile.col, 1)
+  end
+end
+
 function draw.all(graphics, state)
   draw.tiles(graphics, state)
+  draw.candles(graphics, state)
   draw.mobs(graphics, state)
 end
 
