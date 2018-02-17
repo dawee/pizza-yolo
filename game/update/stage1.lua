@@ -162,11 +162,22 @@ function update.pizza(state)
   })
 end
 
+function update.ui(state)
+  local towers = state.ui.towers
+  if love.mouse.isDown(1) then
+    towers = extract.towers(towers)
+  end
+  return merge(state.ui, {
+    towers = towers
+  })
+end
+
 function update.all(state, dt)
   return merge(state, {
     candles = mapUpdate(update.candle, state.candles, state, dt),
     mobs = mapUpdate(update.mob, state.mobs, state, dt),
-    pizza = update.pizza(state)
+    pizza = update.pizza(state),
+    ui = update.ui(state)
   })
 end
 

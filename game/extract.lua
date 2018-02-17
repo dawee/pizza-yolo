@@ -2,6 +2,11 @@ local animation = require('animation')
 
 local extract = {}
 
+extract.SCALE = 8
+extract.SIZE = 8
+extract.MARGIN_TOP = 50
+extract.MARGIN_LEFT = 50
+extract.UI_SCALE = 4
 extract.UP = 'up'
 extract.FLAT = 'flat'
 extract.IDLE = 'idle'
@@ -56,6 +61,23 @@ function extract.mobScreenState(mob)
     bumpState = bumpState,
     posture = posture
   }
+end
+
+function extract.towers(buttons)
+  local towers = {unpack(buttons)}
+  for i, button in pairs(buttons) do
+    towers[i].selected = false
+    local buttonPositionX = love.graphics.getWidth() - (18 * extract.UI_SCALE)
+    local buttonPositionY = (18 * extract.UI_SCALE) * (i - 1) + (2 * extract.UI_SCALE)
+
+    local mouseX, mouseY = love.mouse.getPosition()
+    if mouseX > buttonPositionX and mouseX < buttonPositionX + (16 * extract.UI_SCALE) then
+      if mouseY > buttonPositionY and mouseY < buttonPositionY + (16 * extract.UI_SCALE) then
+        towers[i].selected = true
+      end
+    end
+  end
+  return towers
 end
 
 return extract

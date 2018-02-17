@@ -3,24 +3,18 @@ local extract = require('extract')
 
 local draw = {}
 
-draw.SCALE = 8
-draw.SIZE = 8
-draw.MARGIN_TOP = 50
-draw.MARGIN_LEFT = 50
-draw.UI_SCALE = 4
-
 local function drawAt(image, row, col, size, scaleX, scaleY)
   scaleX = scaleX or 1
   scaleY = scaleY or 1
   love.graphics.draw(
     image,
-    draw.MARGIN_LEFT + size * draw.SIZE * draw.SCALE * (col - 1),
-    draw.MARGIN_TOP + size * draw.SIZE * draw.SCALE * (row - 1),
+    extract.MARGIN_LEFT + size * extract.SIZE * extract.SCALE * (col - 1),
+    extract.MARGIN_TOP + size * extract.SIZE * extract.SCALE * (row - 1),
     0,
-    draw.SCALE * scaleX,
-    draw.SCALE * scaleY,
-    size * draw.SIZE / 2,
-    size * draw.SIZE / 2
+    extract.SCALE * scaleX,
+    extract.SCALE * scaleY,
+    size * extract.SIZE / 2,
+    size * extract.SIZE / 2
   )
 end
 
@@ -73,8 +67,8 @@ function draw.bullets(graphics, bullets)
       love.graphics.setColor(172, 50, 50, 255)
       love.graphics.rectangle(
         'fill',
-        draw.MARGIN_LEFT + draw.SIZE * draw.SCALE * (bullet.tile.col - 1) + draw.SCALE,
-        draw.MARGIN_TOP + draw.SIZE * draw.SCALE * (bullet.tile.row - 1) + draw.SCALE,
+        extract.MARGIN_LEFT + extract.SIZE * extract.SCALE * (bullet.tile.col - 1) + extract.SCALE,
+        extract.MARGIN_TOP + extract.SIZE * extract.SCALE * (bullet.tile.row - 1) + extract.SCALE,
         8, 8
       )
       love.graphics.setColor(255, 255, 255, 255)
@@ -109,9 +103,9 @@ function draw.ui(graphics, state)
   love.graphics.setColor(227, 227, 227, 255)
   love.graphics.rectangle(
     'fill',
-    love.graphics.getWidth() - (20 * draw.UI_SCALE),
+    love.graphics.getWidth() - (20 * extract.UI_SCALE),
     0,
-    (20 * draw.UI_SCALE),
+    (20 * extract.UI_SCALE),
     love.graphics.getHeight()
   )
 
@@ -122,19 +116,19 @@ function draw.ui(graphics, state)
     end
     love.graphics.draw(
       image,
-      love.graphics.getWidth() - (18 * draw.UI_SCALE),
-      (18 * draw.UI_SCALE) * (i - 1) + (2 * draw.UI_SCALE),
+      love.graphics.getWidth() - (18 * extract.UI_SCALE),
+      (18 * extract.UI_SCALE) * (i - 1) + (2 * extract.UI_SCALE),
       0,
-      draw.UI_SCALE,
-      draw.UI_SCALE
+      extract.UI_SCALE,
+      extract.UI_SCALE
     )
     love.graphics.draw(
       graphics[button.type][1],
-      love.graphics.getWidth() - (14 * draw.UI_SCALE),
-      (18 * draw.UI_SCALE) * (i - 1) + (2 * draw.UI_SCALE),
+      love.graphics.getWidth() - (14 * extract.UI_SCALE),
+      (18 * extract.UI_SCALE) * (i - 1) + (2 * extract.UI_SCALE),
       0,
-      draw.UI_SCALE,
-      draw.UI_SCALE
+      extract.UI_SCALE,
+      extract.UI_SCALE
     )
   end
 end
