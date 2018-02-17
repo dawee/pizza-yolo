@@ -1,5 +1,5 @@
 local path = require('path')
-local animation = require('animation')
+local extract = require('extract')
 
 local draw = {}
 
@@ -33,18 +33,14 @@ end
 
 function draw.mobs(graphics, state)
   for __, mob in pairs(state.mobs) do
-    local row, col = animation.bump(mob.previousTile, mob.tile, mob.cursor)
-    local image = graphics.mozza.front[1]
+    local screenState = extract.mobScreenState(mob)
+    local images = {
+      [extract.IDLE] = graphics.mozza.front[1],
+      [extract.FLAT] = graphics.mozza.front[2],
+      [extract.UP] = graphics.mozza.front[3]
+    }
 
-    if mob.cursor > 0.2 and mob.cursor < 0.4 then
-      image = graphics.mozza.front[2]
-    elseif mob.cursor >= 0.4 and mob.cursor < 0.7 then
-      image = graphics.mozza.front[3]
-    elseif mob.cursor >= 0.7 and mob.cursor < 0.9 then
-      image = graphics.mozza.front[2]
-    end
-
-    drawAt(image, row, col, 1)
+    drawAt(images[screenState.bumpState], screenState.row, screenState.col, 1)
   end
 end
 
