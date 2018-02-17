@@ -5,11 +5,24 @@ local extract = {}
 extract.UP = 'up'
 extract.FLAT = 'flat'
 extract.IDLE = 'idle'
+extract.POSTURE_FRONT = 'posture_front'
+extract.POSTURE_BACK = 'posture_back'
+extract.POSTURE_LEFT = 'posture_left'
+extract.POSTURE_RIGHT = 'posture_right'
 
 function extract.mobScreenState(mob)
   local startCursor = 0.4
   local endCursor = 0.7
   local bumpState = extract.IDLE
+  local posture = extract.POSTURE_FRONT
+
+  if mob.previousTile.row > mob.tile.row then
+    posture = extract.POSTURE_BACK
+  elseif mob.previousTile.col < mob.tile.col then
+    posture = extract.POSTURE_RIGHT
+  elseif mob.previousTile.col > mob.tile.col then
+    posture = extract.POSTURE_LEFT
+  end
 
   if mob.cursor > 0.2 and mob.cursor < 0.4 then
     bumpState = extract.FLAT
@@ -23,13 +36,15 @@ function extract.mobScreenState(mob)
     return {
       row = mob.previousTile.row,
       col = mob.previousTile.col,
-      bumpState = bumpState
+      bumpState = bumpState,
+      posture = posture
     }
   elseif mob.cursor > endCursor then
     return {
       row = mob.tile.row,
       col = mob.tile.col,
-      bumpState = bumpState
+      bumpState = bumpState,
+      posture = posture
     }
   end
 
@@ -38,7 +53,8 @@ function extract.mobScreenState(mob)
   return {
     row = animation.easeOutSine(mob.previousTile.row, mob.tile.row, bumpCursor),
     col = animation.easeOutSine(mob.previousTile.col, mob.tile.col, bumpCursor),
-    bumpState = bumpState
+    bumpState = bumpState,
+    posture = posture
   }
 end
 

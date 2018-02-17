@@ -58,6 +58,16 @@ function love.load()
       love.graphics.newImage('asset/mozza/mozza-front1.png'),
       love.graphics.newImage('asset/mozza/mozza-front2.png'),
       love.graphics.newImage('asset/mozza/mozza-front3.png')
+    },
+    back = {
+      love.graphics.newImage('asset/mozza/mozza-back1.png'),
+      love.graphics.newImage('asset/mozza/mozza-back2.png'),
+      love.graphics.newImage('asset/mozza/mozza-back3.png'),
+    },
+    profile = {
+      love.graphics.newImage('asset/mozza/mozza-profile1.png'),
+      love.graphics.newImage('asset/mozza/mozza-profile2.png'),
+      love.graphics.newImage('asset/mozza/mozza-profile3.png'),
     }
   }
 
