@@ -1,6 +1,5 @@
-local extract = require('extract')
+local extract = require('scene.game.extract')
 local path = require('lib.path')
-local shoot = require('lib.shoot')
 local mapUpdate = require('lib.mapupdate')
 local merge = require('lib.merge')
 local cycle = require('lib.cycle')
@@ -90,7 +89,7 @@ function update.bullets(bullets, candle, state, dt)
   local newBullets = bullets
 
   if cycle.isNew(candle.shoot) then
-    local mobsIds = shoot.findMobsNearTower(candle, state)
+    local mobsIds = extract.mobsNearTower(candle, state)
 
     if #mobsIds > 0 then
       newBullets = {unpack(bullets)}

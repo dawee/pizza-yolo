@@ -66,6 +66,23 @@ function extract.mobScreenState(mob)
   }
 end
 
+function extract.mobsNearTower(tower, state)
+  local found = {}
+
+  for _, mob in pairs(state.mobs) do
+    if mob.lives > 0 then
+      local mobScreenState = extract.mobScreenState(mob)
+      local distanceRow = math.abs(tower.tile.row - mobScreenState.row)
+      local distanceCol = math.abs(tower.tile.col - mobScreenState.col)
+      if distanceCol + distanceRow <= tower.radius then
+        table.insert(found, mob.id)
+      end
+    end
+  end
+
+  return found
+end
+
 function extract.selectedTower(towers)
   for _, tower in pairs(towers) do
     if tower.selected then

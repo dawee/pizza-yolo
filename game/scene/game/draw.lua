@@ -1,6 +1,6 @@
 local path = require('lib.path')
 local animation = require('lib.animation')
-local extract = require('extract')
+local extract = require('scene.game.extract')
 
 local draw = {}
 
