@@ -7,8 +7,15 @@ local cycle = require('lib.cycle')
 local update = {}
 
 function update.mob(mob, state, dt)
+  local anim = mob.anim
+  if anim.cursor < 1 then
+    anim = merge(mob.anim, {
+      cursor = math.min(1, anim.cursor + dt / anim.duration)
+    })
+  end
+
   if mob.lives == 0 then
-    return mob
+    return merge(mob, {anim = anim})
   end
 
   local cursor = mob.cursor + mob.velocity * dt
@@ -34,7 +41,8 @@ function update.mob(mob, state, dt)
     tile = nextTile,
     cursor = cursor,
     seenTiles = seenTiles,
-    ate = ate
+    ate = ate,
+    anim = anim
   })
 end
 

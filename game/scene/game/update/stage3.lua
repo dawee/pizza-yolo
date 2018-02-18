@@ -21,9 +21,19 @@ function update.mob(mob, state, dt)
   if hits == 0 then
     return mob
   elseif hits >= mob.lives then
-    return merge(mob, {lives = 0})
+    local anim = {
+      name = 'killed',
+      cursor = 0,
+      duration = 0.4
+    }
+    return merge(mob, {lives = 0, anim = anim})
   else
-    return merge(mob, {lives = mob.lives - hits})
+    local anim = {
+      name = 'hurt',
+      cursor = 0,
+      duration = 0.2
+    }
+    return merge(mob, {lives = mob.lives - hits, anim = anim})
   end
 end
 

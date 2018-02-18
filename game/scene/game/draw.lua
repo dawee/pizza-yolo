@@ -68,7 +68,17 @@ function draw.mob(graphics, mob)
     end
   end
 
-  drawAt(images[screenState.bumpState], screenState.row, screenState.col, 1, scaleX)
+  local color = {255, 255, 255, 255}
+  if mob.anim.cursor < 1 then
+    if mob.anim.name == 'hurt' then
+      local val = 100 + (100 * mob.anim.cursor)
+      color = {val + 50, val, val, 255}
+    elseif mob.anim.name == 'killed' then
+      local alpha = 100 * (math.ceil(mob.anim.cursor * 10) % 2)
+      color[#color] = alpha
+    end
+  end
+  drawAt(images[screenState.bumpState], screenState.row, screenState.col, 1, scaleX, 1, color)
 
   -- mob life bar
   local remainingLife = mob.lives / mob.maxLives
@@ -86,7 +96,8 @@ end
 function draw.mobs(graphics, state)
   love.graphics.setColor(255, 255, 255, 255)
   for __, mob in pairs(state.mobs) do
-    if mob.lives > 0 then
+    local killedAnim = mob.anim.cursor < 1 and mob.anim.name == 'killed'
+    if mob.lives > 0 or killedAnim then
       draw.mob(graphics, mob)
     end
   end

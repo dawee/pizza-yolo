@@ -29,7 +29,12 @@ function update.mobs(mobs, state, dt)
       tile = {row = 8 - index, col = 3},
       cursor = 0,
       seenTiles = {},
-      ate = false
+      ate = false,
+      anim = {
+        name = '',
+        cursor = 1,
+        duration = 0
+      }
     }
   end
 
