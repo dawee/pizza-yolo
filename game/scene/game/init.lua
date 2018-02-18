@@ -16,6 +16,10 @@ function scene.load(game)
           bold_50 = love.graphics.setNewFont('asset/font/slkscreb.ttf', 50),
           normal_30 = love.graphics.setNewFont('asset/font/slkscre.ttf', 30),
           normal_25 = love.graphics.setNewFont('asset/font/slkscre.ttf', 25)
+        },
+        munro = {
+          small_30 = love.graphics.setNewFont('asset/font/MunroSmall.ttf', 30),
+          small_18 = love.graphics.setNewFont('asset/font/MunroSmall.ttf', 18)
         }
       }
     },

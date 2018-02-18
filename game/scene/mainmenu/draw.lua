@@ -4,7 +4,7 @@ local extract = require('scene.mainmenu.extract')
 local draw = {}
 
 function draw.slice(graphics, slice)
-  love.graphics.setColor(unpack(color.opacity(color.WHITE, 0.2)))
+  love.graphics.setColor(unpack(color.WHITE))
   love.graphics.draw(
     graphics.pizza_canvas,
     slice.x,
@@ -21,7 +21,7 @@ function draw.all(graphics, state)
   local windowWidth, windowHeight = love.graphics.getDimensions()
 
   -- Background
-  love.graphics.setColor(unpack(color.TILE_DARK_BLUE))
+  love.graphics.setColor(unpack(color.BULLET_PARTICLE.blueCandle[2]))
   love.graphics.rectangle('fill', 0, 0, windowWidth, windowHeight)
 
   love.graphics.setColor(unpack(color.WHITE))

@@ -200,11 +200,11 @@ function draw.ui(graphics, state)
       extract.UI_SCALE
     )
 
-    love.graphics.setFont(graphics.fonts.silkscreen.normal_25)
+    love.graphics.setFont(graphics.fonts.munro.small_18)
     love.graphics.setColor(0, 0, 0, alpha)
     love.graphics.printf(
       tostring(button.price),
-      love.graphics.getWidth() - (17 * extract.UI_SCALE),
+      love.graphics.getWidth() - (16 * extract.UI_SCALE),
       (18 * extract.UI_SCALE) * (i - 1) + (11 * extract.UI_SCALE),
       18 * extract.UI_SCALE,
       'left'
@@ -212,7 +212,7 @@ function draw.ui(graphics, state)
   end
 
   local money = extract.moneyAvailable(state)
-  love.graphics.setFont(graphics.fonts.silkscreen.normal_30)
+  love.graphics.setFont(graphics.fonts.munro.small_30)
   love.graphics.setColor(0, 0, 0, 255)
   love.graphics.printf(
     tostring(money),
