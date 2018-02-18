@@ -159,7 +159,7 @@ function update.pizza(state)
   end
 
   local slices = {unpack(state.pizza.slices)}
-  while #slices > remainingSlices do
+  while #slices > 0 and (#slices > remainingSlices) do
     math.randomseed(os.time())
     table.remove(slices, math.random(#slices))
   end
