@@ -71,10 +71,10 @@ function scene.load(game)
             },
             shoot = {
               idx = 0,
-              velocity = 1,
+              velocity = 1.2,
               cursor = 0
             },
-            bulletVelocity = 1,
+            bulletVelocity = 2,
             damages = 2
           },
           {
@@ -109,10 +109,10 @@ function scene.load(game)
             },
             shoot = {
               idx = 0,
-              velocity = 4,
+              velocity = 2.5,
               cursor = 0
             },
-            bulletVelocity = 5,
+            bulletVelocity = 4,
             damages = 5
           },
           {
