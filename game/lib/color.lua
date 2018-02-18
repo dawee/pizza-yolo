@@ -9,6 +9,12 @@ color.TILE_LIGHT_BLUE = {203, 219, 252, 255}
 color.TILE_DARK_BLUE = {140, 160, 200, 255}
 color.BLACK = {0, 0, 0, 255}
 color.WHITE = {255, 255, 255, 255}
+color.BULLET_PARTICLE = {
+  candle = {{172, 50, 50}, {248, 227, 113}},
+  greenCandle = {{55, 148, 110}, {153, 229, 80}},
+  blueCandle = {{91, 110, 225}, {95, 205, 228}},
+  purpleCandle = {{118, 66, 138}, {215, 123, 186}}
+}
 
 function color.opacity(inputColor, opacity)
   local outputColor = {unpack(inputColor)}

@@ -104,18 +104,19 @@ function draw.mobs(graphics, state)
   end
 end
 
-function draw.bullets(graphics, bullets)
-  for __, bullet in pairs(bullets) do
+function draw.bullets(graphics, candle)
+  for __, bullet in pairs(candle.bullets) do
     if not bullet.touched then
 
-      local red = {172, 50, 50}
-      local yellow = {248, 227, 113}
+      local fromColor = color.BULLET_PARTICLE[candle.type][1]
+      local toColor = color.BULLET_PARTICLE[candle.type][2]
       for i, particle in pairs(bullet.particles) do
         local color = {0, 0, 0}
         for c = 1, 3 do
-          color[c] = animation.lerp(red[c], yellow[c], i / extract.CANDLE_PARTICLES_COUNT)
+          color[c] = animation.lerp(fromColor[c], toColor[c], i / extract.CANDLE_PARTICLES_COUNT)
         end
 
+        -- color[#color + 1] = 150 - i * 10
         color[#color + 1] = 50 + i * 10
         love.graphics.setColor(unpack(color))
         love.graphics.rectangle(
@@ -126,7 +127,7 @@ function draw.bullets(graphics, bullets)
         )
       end
 
-      love.graphics.setColor(172, 50, 50, 255)
+      love.graphics.setColor(unpack(toColor))
       love.graphics.rectangle(
         'fill',
         extract.MARGIN_LEFT + extract.SIZE * extract.SCALE * (bullet.tile.col - 1) + extract.SCALE,
@@ -149,7 +150,7 @@ function draw.candles(graphics, state)
     end
 
     drawAt(image, candle.tile.row - 1, candle.tile.col, 1)
-    draw.bullets(graphics, candle.bullets)
+    draw.bullets(graphics, candle)
   end
 end
 

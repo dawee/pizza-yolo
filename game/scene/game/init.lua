@@ -70,7 +70,7 @@ function scene.load(game)
             },
             shoot = {
               idx = 0,
-              velocity = 2.5,
+              velocity = 1,
               cursor = 0
             },
             bulletVelocity = 5,
@@ -89,7 +89,7 @@ function scene.load(game)
             },
             shoot = {
               idx = 0,
-              velocity = 2.5,
+              velocity = 3,
               cursor = 0
             },
             bulletVelocity = 6,
@@ -100,7 +100,7 @@ function scene.load(game)
             available = false,
             selected = false,
             price = 6,
-            radius = 3,
+            radius = 2,
             burn = {
               idx = 0,
               velocity = 2,
@@ -108,7 +108,7 @@ function scene.load(game)
             },
             shoot = {
               idx = 0,
-              velocity = 2.5,
+              velocity = 3,
               cursor = 0
             },
             bulletVelocity = 5,
@@ -127,11 +127,11 @@ function scene.load(game)
             },
             shoot = {
               idx = 0,
-              velocity = 5,
+              velocity = 4,
               cursor = 0
             },
-            bulletVelocity = 7,
-            damages = 10
+            bulletVelocity = 6,
+            damages = 6
           }
         }
       },
