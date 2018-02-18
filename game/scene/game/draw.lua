@@ -164,6 +164,11 @@ function draw.ui(graphics, state)
     if button.selected then
       image = graphics.ui.button[2]
     end
+    local alpha = 255
+    if not button.available then
+      alpha = 100
+    end
+    love.graphics.setColor(227, 227, 227, alpha)
     love.graphics.draw(
       image,
       love.graphics.getWidth() - (18 * extract.UI_SCALE),

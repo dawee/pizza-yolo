@@ -101,4 +101,14 @@ function extract.canAddTower(hover, map, candles)
   return not (isPath or isTower)
 end
 
+function extract.towersAvailable(mobs, candles)
+  local deadMobs = 0
+  for _, mob in pairs(mobs) do
+    if mob.lives < 1 then
+      deadMobs = deadMobs + 1
+    end
+  end
+  return deadMobs - #candles + 1
+end
+
 return extract

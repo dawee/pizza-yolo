@@ -167,9 +167,12 @@ end
 
 function update.ui(state)
   local buttons = state.ui.towers
-  if love.mouse.isDown(1) then
-    local towers = {unpack(buttons)}
-    for i, button in pairs(buttons) do
+  local available = extract.towersAvailable(state.mobs, state.candles) > 0
+  local towers = {unpack(buttons)}
+  for i, button in pairs(buttons) do
+    towers[i].available = available
+
+    if available and love.mouse.isDown(1) then
       towers[i].selected = false
       local buttonPositionX = love.graphics.getWidth() - (18 * extract.UI_SCALE)
       local buttonPositionY = (18 * extract.UI_SCALE) * (i - 1) + (2 * extract.UI_SCALE)
@@ -181,7 +184,6 @@ function update.ui(state)
         end
       end
     end
-    return state.ui
   end
   return merge(state.ui, {
     towers = towers
