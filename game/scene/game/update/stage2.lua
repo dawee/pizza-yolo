@@ -3,6 +3,7 @@ local path = require('lib.path')
 local mapUpdate = require('lib.mapupdate')
 local merge = require('lib.merge')
 local cycle = require('lib.cycle')
+local color = require('lib.color')
 
 local update = {}
 
@@ -227,9 +228,15 @@ function update.hover(state)
 end
 
 function update.gameOver(gameOver, state, dt)
+  local completed = extract.isLevelCompleted(state)
   if not gameOver then
-    return extract.isGameOver(state)
-      and {duration = 2, cursor = 0}
+    return (extract.isGameOver(state) or completed)
+      and {
+        duration = 1,
+        cursor = 0,
+        success = completed,
+        background = {duration = 1, cursor = 0, fromColor = color.BLACK, toColor = color.BLACK}
+      }
       or nil
   end
 
@@ -239,7 +246,31 @@ function update.gameOver(gameOver, state, dt)
     cursor = 1
   end
 
-  return merge(gameOver, {cursor = cursor})
+  local background = gameOver.background
+  if gameOver.success then
+    local bgCursor = gameOver.background.cursor + dt / gameOver.background.duration
+    local fromColor = gameOver.background.fromColor
+    local toColor = gameOver.background.toColor
+    if bgCursor > 1 then
+      local possibleColors = {}
+      fromColor = toColor
+      for _, c in pairs(color.SUCCESS_BACKGROUND) do
+        local same = fromColor[1] == c[1] and fromColor[2] == c[2] and fromColor[3] == c[3]
+        if not same then
+          possibleColors[#possibleColors + 1] = c
+        end
+      end
+      bgCursor = 0
+      toColor = possibleColors[math.random(#possibleColors)]
+    end
+    background = merge(gameOver.background, {
+      cursor = bgCursor,
+      fromColor = fromColor,
+      toColor = toColor
+    })
+  end
+
+  return merge(gameOver, {cursor = cursor, background = background})
 end
 
 function update.all(state, dt)

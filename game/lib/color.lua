@@ -15,6 +15,15 @@ color.BULLET_PARTICLE = {
   blueCandle = {{91, 110, 225}, {95, 205, 228}},
   purpleCandle = {{118, 66, 138}, {215, 123, 186}}
 }
+color.SUCCESS_BACKGROUND = {
+  {172, 50, 50, 255},
+  {248, 227, 113, 255},
+  {91, 110, 225, 255},
+  {95, 205, 228, 255},
+  {118, 66, 138, 255},
+  {215, 123, 186, 255}
+}
+color.POUET = 'ohai'
 
 function color.opacity(inputColor, opacity)
   local outputColor = {unpack(inputColor)}

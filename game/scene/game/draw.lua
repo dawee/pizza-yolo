@@ -249,6 +249,17 @@ function draw.gameOver(graphics, state)
   end
 
   local backgroundColor = color.opacity(color.BLACK, state.gameOver.cursor * 3 / 4)
+  if state.gameOver.success then
+    local animatedColor = {}
+    for i = 1, 4 do
+      animatedColor[i] = animation.lerp(
+        state.gameOver.background.fromColor[i],
+        state.gameOver.background.toColor[i],
+        state.gameOver.background.cursor
+      )
+    end
+    backgroundColor = color.opacity(animatedColor, state.gameOver.cursor * 3 / 4)
+  end
   local windowWidth, windowHeight = love.graphics.getDimensions()
 
   love.graphics.setColor(unpack(backgroundColor))
@@ -260,7 +271,11 @@ function draw.gameOver(graphics, state)
 
   love.graphics.setFont(graphics.fonts.silkscreen.bold_50)
   love.graphics.setColor(unpack(color.PIZZA_TOMATO_RED))
-  love.graphics.printf('Game Over', 0, 150, windowWidth, 'center')
+  if state.gameOver.success then
+    love.graphics.printf('You did it!', 0, 150, windowWidth, 'center')
+  else
+    love.graphics.printf('Game Over', 0, 150, windowWidth, 'center')
+  end
 
   love.graphics.setFont(graphics.fonts.silkscreen.normal_30)
   love.graphics.setColor(unpack(color.MOZZA_LIGHT_GRAY))
