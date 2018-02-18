@@ -198,7 +198,28 @@ function draw.ui(graphics, state)
       extract.UI_SCALE,
       extract.UI_SCALE
     )
+
+    love.graphics.setFont(graphics.fonts.silkscreen.normal_25)
+    love.graphics.setColor(0, 0, 0, alpha)
+    love.graphics.printf(
+      tostring(button.price),
+      love.graphics.getWidth() - (17 * extract.UI_SCALE),
+      (18 * extract.UI_SCALE) * (i - 1) + (11 * extract.UI_SCALE),
+      18 * extract.UI_SCALE,
+      'left'
+    )
   end
+
+  local money = extract.moneyAvailable(state)
+  love.graphics.setFont(graphics.fonts.silkscreen.normal_30)
+  love.graphics.setColor(0, 0, 0, 255)
+  love.graphics.printf(
+    tostring(money),
+    love.graphics.getWidth() - (20 * extract.UI_SCALE),
+    love.graphics.getHeight() - (10 * extract.UI_SCALE),
+    20 * extract.UI_SCALE,
+    'center'
+  )
 end
 
 function draw.hover(graphics, state)

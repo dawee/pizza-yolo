@@ -14,7 +14,8 @@ function scene.load(game)
       fonts = {
         silkscreen = {
           bold_50 = love.graphics.setNewFont('asset/font/slkscreb.ttf', 50),
-          normal_30 = love.graphics.setNewFont('asset/font/slkscre.ttf', 30)
+          normal_30 = love.graphics.setNewFont('asset/font/slkscre.ttf', 30),
+          normal_25 = love.graphics.setNewFont('asset/font/slkscre.ttf', 25)
         }
       }
     },
@@ -60,25 +61,77 @@ function scene.load(game)
             type = 'candle',
             available = true,
             selected = false,
-            price = 1
+            price = 2,
+            radius = 2,
+            burn = {
+              idx = 0,
+              velocity = 2,
+              cursor = 0
+            },
+            shoot = {
+              idx = 0,
+              velocity = 2.5,
+              cursor = 0
+            },
+            bulletVelocity = 5,
+            damages = 1
           },
           {
             type = 'greenCandle',
             available = false,
             selected = false,
-            price = 2,
+            price = 3,
+            radius = 2,
+            burn = {
+              idx = 0,
+              velocity = 2,
+              cursor = 0
+            },
+            shoot = {
+              idx = 0,
+              velocity = 2.5,
+              cursor = 0
+            },
+            bulletVelocity = 6,
+            damages = 3
           },
           {
             type = 'blueCandle',
             available = false,
             selected = false,
-            price = 4
+            price = 6,
+            radius = 3,
+            burn = {
+              idx = 0,
+              velocity = 2,
+              cursor = 0
+            },
+            shoot = {
+              idx = 0,
+              velocity = 2.5,
+              cursor = 0
+            },
+            bulletVelocity = 5,
+            damages = 6
           },
           {
             type = 'purpleCandle',
             available = false,
             selected = false,
-            price = 8
+            price = 9,
+            radius = 3,
+            burn = {
+              idx = 0,
+              velocity = 2,
+              cursor = 0
+            },
+            shoot = {
+              idx = 0,
+              velocity = 5,
+              cursor = 0
+            },
+            bulletVelocity = 7,
+            damages = 10
           }
         }
       },

@@ -134,24 +134,11 @@ function update.candles(updateCandle, stateCandles, state, dt)
   local selectedTower = extract.selectedTower(state.ui.towers)
   if extract.clicked(state) and not (selectedTower == nil) then
     if extract.canAddTower(state.hover, state.map, candles) then
-      candles[#candles + 1] = {
-        price = 2,
-        type = selectedTower.type,
-        radius = 2,
-        burn = {
-          idx = 0,
-          velocity = 2,
-          cursor = 0
-        },
-        shoot = {
-          idx = 0,
-          velocity = 2.5,
-          cursor = 0
-        },
-        bulletVelocity = 5,
-        bullets = {},
-        tile = {row = state.hover.row, col = state.hover.col}
-      }
+      candles[#candles + 1] = merge(selectedTower, {
+          bullets = {},
+          tile = {row = state.hover.row, col = state.hover.col}
+        }
+      )
     end
   end
   return candles
@@ -188,9 +175,10 @@ function update.ui(state)
   end
 
   local buttons = state.ui.towers
-  local available = extract.moneyAvailable(state) > 0
+  local money = extract.moneyAvailable(state)
   local towers = {unpack(buttons)}
   for i, button in pairs(buttons) do
+    local available = money >= button.price
     towers[i].available = available
 
     if available and extract.clicked(state) then

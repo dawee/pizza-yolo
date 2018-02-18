@@ -13,7 +13,7 @@ function update.mob(mob, state, dt)
   for __, candle in pairs(state.candles) do
     for __, bullet in pairs(candle.bullets) do
       if (bullet.mobId == mob.id) and bullet.touched then
-        hits = hits + 1
+        hits = hits + candle.damages
       end
     end
   end
