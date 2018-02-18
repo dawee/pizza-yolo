@@ -62,6 +62,10 @@ local function series9()
   return {olive(), olive(), mushroom()}
 end
 
+local function series10()
+  return {olive(), olive(), mushroom()}
+end
+
 local function createSeries()
   return {
     series1(),
@@ -72,7 +76,8 @@ local function createSeries()
     series6(),
     series7(),
     series8(),
-    series9()
+    series9(),
+    series10()
   }
 end
 
