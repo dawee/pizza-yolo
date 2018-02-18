@@ -33,14 +33,20 @@ function draw.all(graphics, state)
   -- Title
   love.graphics.setFont(graphics.fonts.silkscreen.bold_50)
   love.graphics.setColor(unpack(color.MOZZA_LIGHT_GRAY))
-  love.graphics.printf('Pizza Yolo', 0, 152, windowWidth, 'center')
+  love.graphics.printf('Pizza Yolo', 0, 182, windowWidth, 'center')
   love.graphics.setColor(unpack(color.PIZZA_PEPPERONI_RED))
-  love.graphics.printf('Pizza Yolo', 0, 150, windowWidth, 'center')
+  love.graphics.printf('Pizza Yolo', 0, 180, windowWidth, 'center')
+
+  -- Credits
+  love.graphics.setFont(graphics.fonts.silkscreen.normal_15)
+  love.graphics.setColor(unpack(color.PIZZA_PEPPERONI_RED))
+  love.graphics.printf('Developed by Estelle Martinez and David Corticchiato\nFor the Love Jam 2018', 0, 230, windowWidth, 'center')
 
   -- Play message
   love.graphics.setFont(graphics.fonts.silkscreen.normal_30)
   love.graphics.setColor(unpack(color.MOZZA_LIGHT_GRAY))
-  love.graphics.printf('Click to play', 0, 360, windowWidth, 'center')
+  love.graphics.printf('Click to play', 0, 330, windowWidth, 'center')
+
 end
 
 return draw

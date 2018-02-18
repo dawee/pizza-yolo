@@ -15,7 +15,8 @@ function scene.load(game)
       fonts = {
         silkscreen = {
           bold_50 = love.graphics.setNewFont('asset/font/slkscreb.ttf', 50),
-          normal_30 = love.graphics.setNewFont('asset/font/slkscre.ttf', 30)
+          normal_30 = love.graphics.setNewFont('asset/font/slkscre.ttf', 30),
+          normal_15 = love.graphics.setNewFont('asset/font/slkscre.ttf', 15),
         }
       },
       pizza_slices = {
@@ -40,16 +41,18 @@ function scene.load(game)
   local slices = {}
 
   for slice_row = 1, 10 do
-    for slice_col = 1, 10 do
-      slices[#slices + 1] = {
-        turn = {
-          idx = 1,
-          cursor = (slice_row * slice_col) / 100,
-          velocity = 0.2
-        },
-        x = (slice_col - 1) * 100,
-        y = (slice_row - 1) * 100 - 70
-      }
+    if not (slice_row == 4) and not (slice_row == 5) then
+      for slice_col = 1, 10 do
+        slices[#slices + 1] = {
+          turn = {
+            idx = 1,
+            cursor = (slice_row * slice_col) / 100,
+            velocity = 0.2
+          },
+          x = (slice_col - 1) * 100,
+          y = (slice_row - 1) * 100 - 70
+        }
+      end
     end
   end
 
