@@ -26,11 +26,11 @@ function extract.isGameOver(state)
   return #state.pizza.slices == 0
 end
 
-function extract.aliveMobs(state)
+function extract.aliveMobsInScreen(state)
   local aliveMobs = {}
 
   for __, mob in pairs(state.mobs) do
-    if mob.lives > 0 then
+    if mob.lives > 0 and mob.tile.row <= 16 then
       aliveMobs[#aliveMobs + 1] = mob
     end
   end
@@ -62,8 +62,8 @@ end
 
 function extract.isLevelCompleted(state)
   return (#state.pizza.slices > 0)
-    and (state.schedule.tick.idx >= #state.schedule.series)
-    and (#(extract.aliveMobs(state)) == 0)
+    and ((state.schedule.tick.idx >= #state.schedule.series) and (state.schedule.tick.cursor > 0))
+    and (#(extract.aliveMobsInScreen(state)) == 0)
 end
 
 function extract.isGameStopped(state)
