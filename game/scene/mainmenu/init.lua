@@ -6,6 +6,10 @@ local update = require('scene.mainmenu.update')
 local scene = {}
 
 function scene.load(game)
+  -- Set defaults rendering settings
+  love.graphics.setDefaultFilter('nearest', 'nearest')
+
+  local windowWidth, windowHeight = love.graphics.getDimensions()
   local mainMenuScene = {
     graphics = {
       fonts = {
@@ -13,15 +17,55 @@ function scene.load(game)
           bold_50 = love.graphics.setNewFont('asset/font/slkscreb.ttf', 50),
           normal_30 = love.graphics.setNewFont('asset/font/slkscre.ttf', 30)
         }
+      },
+      pizza_slices = {
+        love.graphics.newImage('asset/pizza/pizza1.png'),
+        love.graphics.newImage('asset/pizza/pizza2.png'),
+        love.graphics.newImage('asset/pizza/pizza3.png'),
+        love.graphics.newImage('asset/pizza/pizza4.png'),
+        love.graphics.newImage('asset/pizza/pizza5.png'),
+        love.graphics.newImage('asset/pizza/pizza6.png'),
       }
     },
     state = {
       hover = {
         x = 0,
         y = 0
-      }
+      },
+      slices = {}
     }
   }
+
+  local slices = {}
+
+  for slice_row = 1, 10 do
+    for slice_col = 1, 10 do
+      slices[#slices + 1] = {
+        turn = {
+          idx = 1,
+          cursor = (slice_row * slice_col) / 100,
+          velocity = 0.2
+        },
+        x = (slice_col - 1) * 100,
+        y = (slice_row - 1) * 100 - 70
+      }
+    end
+  end
+
+  mainMenuScene.state.slices = slices
+
+  local pizza_canvas = love.graphics.newCanvas(16, 16)
+
+  love.graphics.setCanvas(pizza_canvas)
+  love.graphics.clear()
+
+  for __, slice in pairs(mainMenuScene.graphics.pizza_slices) do
+    love.graphics.draw(slice)
+  end
+
+  love.graphics.setCanvas()
+
+  mainMenuScene.graphics.pizza_canvas = pizza_canvas
 
   return merge(game, {scene = mainMenuScene})
 end
