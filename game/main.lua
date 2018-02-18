@@ -9,6 +9,8 @@ local game = {
   }
 }
 
+local ACCELERATED = tonumber(os.getenv("ACCELERATED") or 1)
+
 local function load(scene)
   local skip = (not scene)
     or (not scene.load)
@@ -34,7 +36,10 @@ function love.update(dt)
   local scene = scenes[game.navigation.scene]
 
   game = load(scene)
-  game = scene.update and scene.update(game, dt) or game
+
+  for index = 1, ACCELERATED do
+    game = scene.update and scene.update(game, dt) or game
+  end
 end
 
 function love.draw()

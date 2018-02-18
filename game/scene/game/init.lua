@@ -43,6 +43,20 @@ function scene.load(game)
               velocity = 0.8,
             },
           },
+          {
+            {
+              lives = 8,
+              velocity = 0.8,
+            },
+            {
+              lives = 8,
+              velocity = 0.8,
+            },
+            {
+              lives = 8,
+              velocity = 0.8,
+            },
+          }
         }
       },
       mobs = {},
