@@ -18,6 +18,10 @@ extract.POSTURE_LEFT = 'posture_left'
 extract.POSTURE_RIGHT = 'posture_right'
 extract.CANDLE_PARTICLES_COUNT = 5
 
+function extract.isGameOver(state)
+  return #state.pizza.slices == 0
+end
+
 function extract.mobScreenState(mob)
   local startCursor = 0.4
   local endCursor = 0.7

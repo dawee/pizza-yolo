@@ -94,6 +94,10 @@ function update.oneBullet(bullet, candle, state, dt)
 end
 
 function update.bullets(bullets, candle, state, dt)
+  if extract.isGameOver(state) then
+    return bullets
+  end
+
   local newBullets = bullets
 
   if cycle.isNew(candle.shoot) then
@@ -122,6 +126,10 @@ function update.candle(candle, state, dt)
 end
 
 function update.candles(updateCandle, stateCandles, state, dt)
+  if extract.isGameOver(state) then
+    return stateCandles
+  end
+
   local candles = mapUpdate(updateCandle, stateCandles, state, dt)
   local selectedTower = extract.selectedTower(state.ui.towers)
   if love.mouse.isDown(1) and not (selectedTower == nil) then
@@ -173,6 +181,10 @@ function update.pizza(state)
 end
 
 function update.ui(state)
+  if extract.isGameOver(state) then
+    return state.ui
+  end
+
   local buttons = state.ui.towers
   local available = extract.towersAvailable(state.mobs, state.candles) > 0
   local towers = {unpack(buttons)}
@@ -198,6 +210,10 @@ function update.ui(state)
 end
 
 function update.hover(state)
+  if extract.isGameOver(state) then
+    return state.hover
+  end
+
   local mouseX, mouseY = love.mouse.getPosition()
   local tileSize =  extract.SIZE * extract.SCALE
   mouseX = mouseX - extract.MARGIN_LEFT + tileSize / 2
@@ -217,8 +233,8 @@ function update.hover(state)
 end
 
 function update.gameOver(gameOver, state, dt)
-  if not gameOver or not gameOver.duration then
-    return (#state.pizza.slices == 0)
+  if not gameOver then
+    return extract.isGameOver(state)
       and {duration = 2, cursor = 0}
       or nil
   end
