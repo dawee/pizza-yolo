@@ -6,36 +6,7 @@ local update = require('update')
 local game = {
   graphics = {},
   state = {
-    candles = {
-      {
-        radius = 2,
-        burn = {
-          velocity = 2,
-          cursor = 0
-        },
-        shoot = {
-          velocity = 2.5,
-          cursor = 0
-        },
-        bulletVelocity = 5,
-        bullets = {},
-        tile = {row = 3, col = 2}
-      },
-      {
-        radius = 2,
-        burn = {
-          velocity = 2,
-          cursor = 0.5
-        },
-        shoot = {
-          velocity = 2.5,
-          cursor = 0
-        },
-        bulletVelocity = 5,
-        bullets = {},
-        tile = {row = 5, col = 8}
-      }
-    },
+    candles = {},
     mobs = {
       {
         id = 1,
