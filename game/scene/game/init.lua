@@ -63,7 +63,7 @@ function scene.load(game)
             available = true,
             selected = false,
             price = 2,
-            radius = 2,
+            radius = 1,
             burn = {
               idx = 0,
               velocity = 2,
@@ -74,8 +74,8 @@ function scene.load(game)
               velocity = 1,
               cursor = 0
             },
-            bulletVelocity = 5,
-            damages = 1
+            bulletVelocity = 1,
+            damages = 2
           },
           {
             type = 'greenCandle',
@@ -90,36 +90,17 @@ function scene.load(game)
             },
             shoot = {
               idx = 0,
-              velocity = 3,
+              velocity = 1.5,
               cursor = 0
             },
-            bulletVelocity = 6,
-            damages = 3
+            bulletVelocity = 2,
+            damages = 6
           },
           {
             type = 'blueCandle',
             available = false,
             selected = false,
             price = 14,
-            radius = 2,
-            burn = {
-              idx = 0,
-              velocity = 2,
-              cursor = 0
-            },
-            shoot = {
-              idx = 0,
-              velocity = 3,
-              cursor = 0
-            },
-            bulletVelocity = 5,
-            damages = 6
-          },
-          {
-            type = 'purpleCandle',
-            available = false,
-            selected = false,
-            price = 30,
             radius = 3,
             burn = {
               idx = 0,
@@ -131,8 +112,27 @@ function scene.load(game)
               velocity = 4,
               cursor = 0
             },
-            bulletVelocity = 6,
-            damages = 6
+            bulletVelocity = 5,
+            damages = 5
+          },
+          {
+            type = 'purpleCandle',
+            available = false,
+            selected = false,
+            price = 30,
+            radius = 6,
+            burn = {
+              idx = 0,
+              velocity = 2,
+              cursor = 0
+            },
+            shoot = {
+              idx = 0,
+              velocity = 0.4,
+              cursor = 0
+            },
+            bulletVelocity = 1.2,
+            damages = 100
           }
         }
       },
