@@ -1,4 +1,4 @@
-local update = require('update')
+local update = require('update.stage1')
 local mob1Fixture = require('test.fixture.mob1')
 local map1Fixture = require('test.fixture.map1')
 
@@ -11,7 +11,7 @@ function suite.tests.update1(it)
   local test = it('should move to next tile')
 
   local function run(assert)
-    local mob = update.mob(mob1Fixture, {map = map1Fixture}, 1)
+    local mob = update.mob(mob1Fixture, {map = map1Fixture, pizza = { slices = {1, 2, 3, 4, 5, 6, 7, 8}, tile = {5, 5} }}, 1)
 
     return assert.all(
       assert.is(mob.tile.row, 2),

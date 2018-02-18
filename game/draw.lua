@@ -94,7 +94,7 @@ function draw.candles(graphics, state)
       image = graphics.candle[2]
     end
 
-    drawAt(image, candle.tile.row, candle.tile.col, 1)
+    drawAt(image, candle.tile.row - 1, candle.tile.col, 1)
     draw.bullets(graphics, candle.bullets)
   end
 end

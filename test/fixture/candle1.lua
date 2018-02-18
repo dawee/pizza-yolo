@@ -10,5 +10,5 @@ return {
   },
   bulletVelocity = 5,
   bullets = {},
-  tile = {row = 1, col = 2}
+  tile = {row = 2, col = 2}
 }

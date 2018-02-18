@@ -102,7 +102,7 @@ function update.bullets(bullets, candle, state, dt)
       newBullets = {unpack(bullets)}
       newBullets[#newBullets + 1] = {
         touched = false,
-        tile = {row = candle.tile.row, col = candle.tile.col},
+        tile = {row = candle.tile.row - 1, col = candle.tile.col},
         mobId = mobsIds[1]
       }
     end

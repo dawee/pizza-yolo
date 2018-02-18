@@ -19,7 +19,7 @@ local game = {
         },
         bulletVelocity = 5,
         bullets = {},
-        tile = {row = 2, col = 2}
+        tile = {row = 3, col = 2}
       },
       {
         radius = 2,
@@ -33,7 +33,7 @@ local game = {
         },
         bulletVelocity = 5,
         bullets = {},
-        tile = {row = 4, col = 8}
+        tile = {row = 5, col = 8}
       }
     },
     mobs = {
