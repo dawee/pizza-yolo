@@ -6,20 +6,12 @@ local extract = require('scene.game.extract')
 local update = {}
 
 function update.schedule(schedule, state, dt)
-  if extract.isGameStopped(state) then
-    return schedule
-  end
-
   return merge(schedule, {
     tick = cycle.run(schedule.tick, dt)
   })
 end
 
 function update.mobs(mobs, state, dt)
-  if extract.isGameStopped(state) then
-    return mobs
-  end
-
   local series = state.schedule.series[state.schedule.tick.idx]
 
   if (not cycle.isNew(state.schedule.tick)) or (not series) then
