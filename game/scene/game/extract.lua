@@ -155,7 +155,13 @@ function extract.towersAvailable(mobs, candles)
       deadMobs = deadMobs + 1
     end
   end
-  return deadMobs - #candles + 1
+
+  if #candles == 0 then
+    return 1
+  else
+    return deadMobs - #candles
+  end
+
 end
 
 return extract

@@ -8,9 +8,9 @@ local function mozza()
   }
 end
 
-local function cheddar()
+local function olive()
   return {
-    type = 'cheddar',
+    type = 'olive',
     lives = 70,
     velocity = 0.8,
   }
@@ -20,7 +20,7 @@ local function mushroom()
   return {
     type = 'mushroom',
     lives = 60,
-    velocity = 1.2,
+    velocity = 1.6,
   }
 end
 
@@ -43,23 +43,23 @@ local function series4()
 end
 
 local function series5()
-  return {mozza(), cheddar(), mozza()}
+  return {mozza(), olive(), mozza()}
 end
 
 local function series6()
-  return {mozza(), cheddar(), mozza()}
+  return {mozza(), olive(), mozza()}
 end
 
 local function series7()
-  return {cheddar(), cheddar()}
+  return {olive(), olive()}
 end
 
 local function series8()
-  return {cheddar(), cheddar()}
+  return {olive(), olive()}
 end
 
 local function series9()
-  return {cheddar(), mushroom(), cheddar()}
+  return {olive(), olive(), mushroom()}
 end
 
 local function createSeries()

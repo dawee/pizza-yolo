@@ -128,6 +128,24 @@ function scene.load(game)
     }
   }
 
+  gameScene.graphics.olive = {
+    front = {
+      love.graphics.newImage('asset/mob/olive-front1.png'),
+      love.graphics.newImage('asset/mob/olive-front2.png'),
+      love.graphics.newImage('asset/mob/olive-front3.png')
+    },
+    back = {
+      love.graphics.newImage('asset/mob/olive-back1.png'),
+      love.graphics.newImage('asset/mob/olive-back2.png'),
+      love.graphics.newImage('asset/mob/olive-back3.png'),
+    },
+    profile = {
+      love.graphics.newImage('asset/mob/olive-profile1.png'),
+      love.graphics.newImage('asset/mob/olive-profile2.png'),
+      love.graphics.newImage('asset/mob/olive-profile3.png'),
+    }
+  }
+
   gameScene.graphics.candle = {
     love.graphics.newImage('asset/candle/candle1.png'),
     love.graphics.newImage('asset/candle/candle2.png'),
