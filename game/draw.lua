@@ -1,4 +1,4 @@
-local path = require('path')
+local path = require('lib.path')
 local extract = require('extract')
 
 local draw = {}

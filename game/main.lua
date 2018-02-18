@@ -7,17 +7,50 @@ local game = {
   graphics = {},
   state = {
     candles = {},
-    mobs = {
-      {
-        id = 1,
-        lives = 8,
-        velocity = 0.8,
-        previousTile = {row = 0, col = 3},
-        tile = {row = 1, col = 3},
+    schedule = {
+      tick = {
+        idx = 0,
         cursor = 0,
-        seenTiles = {},
-        ate = false
+        velocity = 0.2
+      },
+      series = {
+        {
+          {
+            lives = 8,
+            velocity = 0.8,
+          },
+          {
+            lives = 8,
+            velocity = 0.8,
+          },
+        },
+        {
+          {
+            lives = 8,
+            velocity = 0.8,
+          },
+          {
+            lives = 8,
+            velocity = 0.8,
+          },
+          {
+            lives = 8,
+            velocity = 0.8,
+          },
+        },
       }
+    },
+    mobs = {
+      -- {
+      --   id = 1,
+      --   lives = 8,
+      --   velocity = 0.8,
+      --   previousTile = {row = 0, col = 3},
+      --   tile = {row = 1, col = 3},
+      --   cursor = 0,
+      --   seenTiles = {},
+      --   ate = false
+      -- }
     },
     pizza = {
       slices = {1, 2, 3, 4, 5, 6, 7, 8},
@@ -25,6 +58,12 @@ local game = {
     },
     map = {
       tiles = {
+        {'.', '.', '_', '.', '.', '.', '.', '.', '.', '.', '.'},
+        {'.', '.', '_', '.', '.', '.', '.', '.', '.', '.', '.'},
+        {'.', '.', '_', '.', '.', '.', '.', '.', '.', '.', '.'},
+        {'.', '.', '_', '.', '.', '.', '.', '.', '.', '.', '.'},
+        {'.', '.', '_', '.', '.', '.', '.', '.', '.', '.', '.'},
+        {'.', '.', '_', '.', '.', '.', '.', '.', '.', '.', '.'},
         {'W', 'W', '_', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
         {'W', 'W', '_', '_', '_', '_', '_', '_', '_', '_', 'W'},
         {'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', '_', 'W'},

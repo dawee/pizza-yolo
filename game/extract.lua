@@ -1,5 +1,5 @@
-local animation = require('animation')
-local path = require('path')
+local animation = require('lib.animation')
+local path = require('lib.path')
 
 local extract = {}
 
