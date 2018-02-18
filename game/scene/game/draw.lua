@@ -139,12 +139,13 @@ end
 
 function draw.candles(graphics, state)
   for __, candle in pairs(state.candles) do
-    local image = graphics.candle[1]
+    local images = graphics[candle.type]
+    local image = images[1]
 
     if candle.burn.cursor > 0.7 then
-      image = graphics.candle[3]
+      image = images[3]
     elseif candle.burn.cursor > 0.3 then
-      image = graphics.candle[2]
+      image = images[2]
     end
 
     drawAt(image, candle.tile.row - 1, candle.tile.col, 1)

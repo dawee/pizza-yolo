@@ -59,7 +59,26 @@ function scene.load(game)
           {
             type = 'candle',
             available = true,
-            selected = false
+            selected = false,
+            price = 1
+          },
+          {
+            type = 'greenCandle',
+            available = false,
+            selected = false,
+            price = 2,
+          },
+          {
+            type = 'blueCandle',
+            available = false,
+            selected = false,
+            price = 4
+          },
+          {
+            type = 'purpleCandle',
+            available = false,
+            selected = false,
+            price = 8
           }
         }
       },
@@ -150,6 +169,24 @@ function scene.load(game)
     love.graphics.newImage('asset/candle/candle1.png'),
     love.graphics.newImage('asset/candle/candle2.png'),
     love.graphics.newImage('asset/candle/candle3.png')
+  }
+
+  gameScene.graphics.greenCandle = {
+    love.graphics.newImage('asset/candle/candle-green1.png'),
+    love.graphics.newImage('asset/candle/candle-green2.png'),
+    love.graphics.newImage('asset/candle/candle-green3.png')
+  }
+
+  gameScene.graphics.blueCandle = {
+    love.graphics.newImage('asset/candle/candle-blue1.png'),
+    love.graphics.newImage('asset/candle/candle-blue2.png'),
+    love.graphics.newImage('asset/candle/candle-blue3.png')
+  }
+
+  gameScene.graphics.purpleCandle = {
+    love.graphics.newImage('asset/candle/candle-purple1.png'),
+    love.graphics.newImage('asset/candle/candle-purple2.png'),
+    love.graphics.newImage('asset/candle/candle-purple3.png')
   }
 
   gameScene.graphics.pizza = {

@@ -136,6 +136,7 @@ function update.candles(updateCandle, stateCandles, state, dt)
     if extract.canAddTower(state.hover, state.map, candles) then
       candles[#candles + 1] = {
         price = 2,
+        type = selectedTower.type,
         radius = 2,
         burn = {
           idx = 0,
