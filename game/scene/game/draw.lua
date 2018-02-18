@@ -47,22 +47,22 @@ function draw.mob(graphics, mob)
   local screenState = extract.mobScreenState(mob)
   local scaleX = 1
   local images = {
-    [extract.IDLE] = graphics.mozza.front[1],
-    [extract.FLAT] = graphics.mozza.front[2],
-    [extract.UP] = graphics.mozza.front[3]
+    [extract.IDLE] = graphics[mob.type].front[1],
+    [extract.FLAT] = graphics[mob.type].front[2],
+    [extract.UP] = graphics[mob.type].front[3]
   }
 
   if screenState.posture == extract.POSTURE_BACK then
     images = {
-      [extract.IDLE] = graphics.mozza.back[1],
-      [extract.FLAT] = graphics.mozza.back[2],
-      [extract.UP] = graphics.mozza.back[3]
+      [extract.IDLE] = graphics[mob.type].back[1],
+      [extract.FLAT] = graphics[mob.type].back[2],
+      [extract.UP] = graphics[mob.type].back[3]
     }
   elseif screenState.posture == extract.POSTURE_LEFT or screenState.posture == extract.POSTURE_RIGHT then
     images = {
-      [extract.IDLE] = graphics.mozza.profile[1],
-      [extract.FLAT] = graphics.mozza.profile[2],
-      [extract.UP] = graphics.mozza.profile[3]
+      [extract.IDLE] = graphics[mob.type].profile[1],
+      [extract.FLAT] = graphics[mob.type].profile[2],
+      [extract.UP] = graphics[mob.type].profile[3]
     }
     if screenState.posture == extract.POSTURE_LEFT then
       scaleX = -1

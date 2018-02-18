@@ -22,6 +22,7 @@ function update.mobs(mobs, state, dt)
   for index, template in ipairs(series) do
     newMobs[#newMobs + 1] = {
       id = uuid(),
+      type = template.type,
       lives = template.lives,
       maxLives = template.lives,
       velocity = template.velocity,

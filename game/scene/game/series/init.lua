@@ -8,6 +8,14 @@ local function mozza()
   }
 end
 
+local function cheddar()
+  return {
+    type = 'cheddar',
+    lives = 32,
+    velocity = 0.8,
+  }
+end
+
 -- Series
 
 local function series1()
@@ -26,12 +34,17 @@ local function series4()
   return {mozza(), mozza()}
 end
 
+local function series5()
+  return {mozza(), cheddar(), mozza()}
+end
+
 local function createSeries()
   return {
     series1(),
     series2(),
     series3(),
-    series4()
+    series4(),
+    series5()
   }
 end
 
