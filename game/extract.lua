@@ -5,7 +5,8 @@ local extract = {}
 
 extract.SCALE = 8
 extract.SIZE = 8
-extract.MARGIN_TOP = extract.SCALE * extract.SIZE / 2
+extract.SPAWN_ROWS = 6
+extract.MARGIN_TOP = (extract.SCALE * extract.SIZE / 2) - (extract.SPAWN_ROWS * extract.SIZE * extract.SCALE)
 extract.MARGIN_LEFT = extract.SCALE * extract.SIZE / 2
 extract.UI_SCALE = 4
 extract.UP = 'up'

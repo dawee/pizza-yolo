@@ -14,7 +14,7 @@ function path.findAdjacentTiles(tile, map)
   local adjacentTiles = {}
   local tileType = map.tiles[tile.row][tile.col]
 
-  for __, offset in pairs({{-1, 0}, {0, -1}, {1, 0}, {0, 1}}) do
+  for __, offset in pairs({{0, 1}, {-1, 0}, {0, -1}, {1, 0}}) do
     local offsetCol, offsetRow = unpack(offset)
     local row = tile.row + offsetRow
     local col = tile.col + offsetCol

@@ -11,7 +11,7 @@ local game = {
       tick = {
         idx = 0,
         cursor = 0,
-        velocity = 0.2
+        velocity = 0.1
       },
       series = {
         {
@@ -40,21 +40,10 @@ local game = {
         },
       }
     },
-    mobs = {
-      -- {
-      --   id = 1,
-      --   lives = 8,
-      --   velocity = 0.8,
-      --   previousTile = {row = 0, col = 3},
-      --   tile = {row = 1, col = 3},
-      --   cursor = 0,
-      --   seenTiles = {},
-      --   ate = false
-      -- }
-    },
+    mobs = {},
     pizza = {
       slices = {1, 2, 3, 4, 5, 6, 7, 8},
-      tile = {row = 8, col = 2}
+      tile = {row = 14, col = 2}
     },
     map = {
       tiles = {

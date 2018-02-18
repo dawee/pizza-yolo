@@ -3,9 +3,12 @@ local extract = require('extract')
 
 local draw = {}
 
-local function drawAt(image, row, col, size, scaleX, scaleY)
+local function drawAt(image, row, col, size, scaleX, scaleY, color)
   scaleX = scaleX or 1
   scaleY = scaleY or 1
+  color = color or {255, 255, 255, 255}
+
+  love.graphics.setColor(unpack(color))
   love.graphics.draw(
     image,
     extract.MARGIN_LEFT + size * extract.SIZE * extract.SCALE * (col - 1),
@@ -91,7 +94,6 @@ function draw.bullets(graphics, bullets)
 end
 
 function draw.candles(graphics, state)
-  love.graphics.setColor(255, 255, 255, 255)
   for __, candle in pairs(state.candles) do
     local image = graphics.candle[1]
 
