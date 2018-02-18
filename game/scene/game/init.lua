@@ -110,6 +110,24 @@ function scene.load(game)
     }
   }
 
+  gameScene.graphics.mushroom = {
+    front = {
+      love.graphics.newImage('asset/mob/mushroom-front1.png'),
+      love.graphics.newImage('asset/mob/mushroom-front2.png'),
+      love.graphics.newImage('asset/mob/mushroom-front3.png')
+    },
+    back = {
+      love.graphics.newImage('asset/mob/mushroom-back1.png'),
+      love.graphics.newImage('asset/mob/mushroom-back2.png'),
+      love.graphics.newImage('asset/mob/mushroom-back3.png'),
+    },
+    profile = {
+      love.graphics.newImage('asset/mob/mushroom-profile1.png'),
+      love.graphics.newImage('asset/mob/mushroom-profile2.png'),
+      love.graphics.newImage('asset/mob/mushroom-profile3.png'),
+    }
+  }
+
   gameScene.graphics.candle = {
     love.graphics.newImage('asset/candle/candle1.png'),
     love.graphics.newImage('asset/candle/candle2.png'),
