@@ -268,11 +268,21 @@ function scene.load(game)
   return merge(game, {scene = gameScene})
 end
 
+function updateStateWithAcceleration(state, dt)
+  local newState = state
+
+  for i = 1, 2 do
+    newState = update.all(newState, dt)
+  end
+
+  return newState
+end
+
 function scene.update(game, dt)
   return merge(game, {
     navigation = update.navigation(game.navigation, game, dt),
     scene = merge(game.scene, {
-      state = update.all(game.scene.state, dt)
+      state = updateStateWithAcceleration(game.scene.state, dt)
     })
   })
 end
