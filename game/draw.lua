@@ -18,15 +18,22 @@ local function drawAt(image, row, col, size, scaleX, scaleY)
   )
 end
 
+function draw.tile(graphics, row, col, tileType)
+  local image = (tileType == path.PATH_TYPE)
+    and graphics.tilePath
+    or graphics.tileWall
+
+    drawAt(image, row, col, 1)
+end
+
 function draw.tiles(graphics, state)
   love.graphics.setColor(255, 255, 255, 255)
+
   for row, tilesRow in ipairs(state.map.tiles) do
     for col, tileType in ipairs(tilesRow) do
-      local image = (tileType == path.PATH_TYPE)
-        and graphics.tilePath
-        or graphics.tileWall
-
-        drawAt(image, row, col, 1)
+      if ((tileType == path.PATH_TYPE) or (tileType == path.WALL_TYPE)) then
+        draw.tile(graphics, row, col, tileType)
+      end
     end
   end
 end
