@@ -1,6 +1,6 @@
-local stage1 = require('update.stage1')
-local stage2 = require('update.stage2')
-local stage3 = require('update.stage3')
+local stage1 = require('scene.game.update.stage1')
+local stage2 = require('scene.game.update.stage2')
+local stage3 = require('scene.game.update.stage3')
 
 function pipe(...)
   local funcs = {...}
