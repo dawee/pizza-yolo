@@ -51,6 +51,7 @@ end
 
 function update.all(state, dt)
   return merge(state, {
+    mouseDown = love.mouse.isDown(1),
     candles = mapUpdate(update.candle, state.candles, state, dt),
     mobs = mapUpdate(update.mob, state.mobs, state, dt)
   })

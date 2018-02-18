@@ -11,6 +11,7 @@ end
 
 function update.all(state, dt)
   return merge(state, {
+    mouseDown = love.mouse.isDown(1),
     hover = update.hover(state.hover, state, dt)
   })
 end
@@ -18,7 +19,7 @@ end
 function update.navigation(navigation, game, dt)
   local scene = navigation.scene
 
-  if love.mouse.isDown(1) and extract.isPlayButtonHovered(game.scene.state) then
+  if extract.clicked(game.scene.state) and extract.isPlayButtonHovered(game.scene.state) then
     scene = 'game'
   end
 

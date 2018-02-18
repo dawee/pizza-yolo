@@ -1,5 +1,9 @@
 local extract = {}
 
+function extract.clicked(state)
+  return love.mouse.isDown(1) and not state.mouseDown
+end
+
 function extract.isPlayButtonHovered(state)
   local windowWidth, windowHeight = love.graphics.getDimensions()
 

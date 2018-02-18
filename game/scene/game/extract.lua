@@ -18,6 +18,10 @@ extract.POSTURE_LEFT = 'posture_left'
 extract.POSTURE_RIGHT = 'posture_right'
 extract.CANDLE_PARTICLES_COUNT = 5
 
+function extract.clicked(state)
+  return love.mouse.isDown(1) and not state.mouseDown
+end
+
 function extract.isGameOver(state)
   return #state.pizza.slices == 0
 end

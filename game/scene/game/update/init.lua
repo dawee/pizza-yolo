@@ -1,21 +1,22 @@
-local stage1 = require('scene.game.update.stage1')
-local stage2 = require('scene.game.update.stage2')
-local stage3 = require('scene.game.update.stage3')
+local extract = require('scene.game.extract')
+local merge = require('lib.merge')
+local pipe = require('lib.pipe')
+local stages = {
+  require('scene.game.update.stage1').all,
+  require('scene.game.update.stage2').all,
+  require('scene.game.update.stage3').all
+}
 
-function pipe(...)
-  local funcs = {...}
+local update = {}
 
-  return function (state, dt)
-    local newState = state
+update.all = pipe(unpack(stages))
 
-    for key, func in pairs(funcs) do
-      newState = func(newState, dt)
-    end
-
-    return newState
+function update.navigation(navigation, game, dt)
+  if extract.clicked(game.scene.state) and extract.isGameOver(game.scene.state) then
+    return merge(navigation, {scene = 'mainMenu'})
   end
+
+  return navigation
 end
 
-return {
-  all = pipe(stage1.all, stage2.all, stage3.all)
-}
+return update

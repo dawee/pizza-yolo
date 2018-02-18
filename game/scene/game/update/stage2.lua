@@ -132,7 +132,7 @@ function update.candles(updateCandle, stateCandles, state, dt)
 
   local candles = mapUpdate(updateCandle, stateCandles, state, dt)
   local selectedTower = extract.selectedTower(state.ui.towers)
-  if love.mouse.isDown(1) and not (selectedTower == nil) then
+  if extract.clicked(state) and not (selectedTower == nil) then
     if extract.canAddTower(state.hover, state.map, candles) then
       candles[#candles + 1] = {
         radius = 2,
@@ -191,7 +191,7 @@ function update.ui(state)
   for i, button in pairs(buttons) do
     towers[i].available = available
 
-    if available and love.mouse.isDown(1) then
+    if available and extract.clicked(state) then
       towers[i].selected = false
       local buttonPositionX = love.graphics.getWidth() - (18 * extract.UI_SCALE)
       local buttonPositionY = (18 * extract.UI_SCALE) * (i - 1) + (2 * extract.UI_SCALE)

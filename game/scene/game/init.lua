@@ -159,6 +159,7 @@ end
 
 function scene.update(game, dt)
   return merge(game, {
+    navigation = update.navigation(game.navigation, game, dt),
     scene = merge(game.scene, {
       state = update.all(game.scene.state, dt)
     })
