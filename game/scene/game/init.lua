@@ -9,7 +9,14 @@ function scene.load(game)
   love.graphics.setDefaultFilter('nearest', 'nearest')
 
   local gameScene = {
-    graphics = {},
+    graphics = {
+      fonts = {
+        silkscreen = {
+          bold_50 = love.graphics.setNewFont('asset/font/slkscreb.ttf', 50),
+          normal_30 = love.graphics.setNewFont('asset/font/slkscre.ttf', 30)
+        }
+      }
+    },
     state = {
       candles = {},
       schedule = {

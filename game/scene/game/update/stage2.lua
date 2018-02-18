@@ -216,9 +216,26 @@ function update.hover(state)
   return merge(state.hover, hover)
 end
 
+function update.gameOver(gameOver, state, dt)
+  if not gameOver or not gameOver.duration then
+    return (#state.pizza.slices == 0)
+      and {duration = 2, cursor = 0}
+      or nil
+  end
+
+  local cursor = gameOver.cursor + dt / gameOver.duration
+
+  if (cursor > 1) then
+    cursor = 1
+  end
+
+  return merge(gameOver, {cursor = cursor})
+end
+
 function update.all(state, dt)
   return merge(state, {
     candles = update.candles(update.candle, state.candles, state, dt),
+    gameOver = update.gameOver(state.gameOver, state, dt),
     mobs = mapUpdate(update.mob, state.mobs, state, dt),
     pizza = update.pizza(state),
     ui = update.ui(state),

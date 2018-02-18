@@ -1,5 +1,6 @@
 local path = require('lib.path')
 local animation = require('lib.animation')
+local color = require('lib.color')
 local extract = require('scene.game.extract')
 
 local draw = {}
@@ -219,6 +220,30 @@ function draw.hover(graphics, state)
   )
 end
 
+function draw.gameOver(graphics, state)
+  if not state.gameOver then
+    return
+  end
+
+  local backgroundColor = color.opacity(color.BLACK, state.gameOver.cursor * 3 / 4)
+  local windowWidth, windowHeight = love.graphics.getDimensions()
+
+  love.graphics.setColor(unpack(backgroundColor))
+  love.graphics.rectangle('fill', 0, 0, love.graphics.getDimensions())
+
+  if state.gameOver.cursor < 1 then
+    return
+  end
+
+  love.graphics.setFont(graphics.fonts.silkscreen.bold_50)
+  love.graphics.setColor(unpack(color.PIZZA_TOMATO_RED))
+  love.graphics.printf('Game Over', 0, 150, windowWidth, 'center')
+
+  love.graphics.setFont(graphics.fonts.silkscreen.normal_30)
+  love.graphics.setColor(unpack(color.MOZZA_LIGHT_GRAY))
+  love.graphics.printf('Click to go back\nto the main menu', 0, 300, windowWidth, 'center')
+end
+
 function draw.all(graphics, state)
   draw.tiles(graphics, state)
   draw.hover(graphics, state)
@@ -226,6 +251,7 @@ function draw.all(graphics, state)
   draw.mobs(graphics, state)
   draw.candles(graphics, state)
   draw.ui(graphics, state)
+  draw.gameOver(graphics, state)
 end
 
 return draw
