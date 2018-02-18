@@ -25,7 +25,7 @@ function scene.load(game)
         tick = {
           idx = 1,
           cursor = 0,
-          velocity = 0.1
+          velocity = 0.08
         },
         series = createSeries()
       },
@@ -80,7 +80,7 @@ function scene.load(game)
             type = 'greenCandle',
             available = false,
             selected = false,
-            price = 3,
+            price = 6,
             radius = 2,
             burn = {
               idx = 0,
@@ -99,7 +99,7 @@ function scene.load(game)
             type = 'blueCandle',
             available = false,
             selected = false,
-            price = 6,
+            price = 14,
             radius = 2,
             burn = {
               idx = 0,
@@ -118,7 +118,7 @@ function scene.load(game)
             type = 'purpleCandle',
             available = false,
             selected = false,
-            price = 9,
+            price = 30,
             radius = 3,
             burn = {
               idx = 0,

@@ -11,7 +11,7 @@ end
 local function olive()
   return {
     type = 'olive',
-    lives = 70,
+    lives = 50,
     velocity = 0.8,
   }
 end
@@ -19,7 +19,7 @@ end
 local function mushroom()
   return {
     type = 'mushroom',
-    lives = 70,
+    lives = 80,
     velocity = 1.6,
   }
 end
@@ -27,7 +27,7 @@ end
 local function cheddar()
   return {
     type = 'cheddar',
-    lives = 200,
+    lives = 800,
     velocity = 0.8,
   }
 end
@@ -59,28 +59,101 @@ local function series6()
 end
 
 local function series7()
-  return {olive(), olive()}
+  return {mozza(), olive(), olive(), mozza()}
 end
 
 local function series8()
-  return {olive(), olive()}
+  return {mozza(), olive(), olive(), mozza(), mozza()}
 end
 
 local function series9()
-  return {mushroom()}
+  return {olive(), olive(), mozza(), mozza(), mozza()}
 end
 
 local function series10()
-  return {mushroom(), mushroom()}
+  return {olive(), olive(), olive(), olive()}
 end
 
 local function series11()
-  return {olive(), olive(), mushroom()}
+  return {mozza(), olive(), olive(), mozza()}
 end
 
 local function series12()
+  return {mozza(), olive(), olive(), mozza()}
+end
+
+local function series13()
+  return {mushroom()}
+end
+
+local function series14()
+  return {mozza(), mozza()}
+end
+
+local function series15()
+  return {mozza(), olive()}
+end
+
+local function series16()
+  return {mushroom(), mushroom()}
+end
+
+local function series17()
+  return {mushroom(), mushroom(), mushroom(), mushroom()}
+end
+
+local function series18()
+  return {olive(), olive(), olive(), olive()}
+end
+
+local function series19()
+  return {mozza(), mozza(), mozza(), mozza(), olive(), olive()}
+end
+
+local function series20()
+  return {mozza(), mozza(), mozza(), mozza(), olive(), olive()}
+end
+
+local function series21()
+  return {mozza(), mozza(), mozza(), mozza(), mushroom()}
+end
+
+local function series22()
+  return {mozza(), mozza(), olive(), olive()}
+end
+
+local function series23()
+  return {mozza(), mozza(), olive(), olive()}
+end
+
+local function series24()
+  return {mushroom(), mushroom(), mushroom(), mushroom(), mushroom(), mushroom()}
+end
+
+local function series25()
   return {cheddar()}
 end
+
+local function series26()
+  return {mozza(), mozza(), mozza(), mozza()}
+end
+
+local function series27()
+  return {mushroom(), mushroom(), mushroom(), mushroom(), mushroom(), mushroom()}
+end
+
+local function series28()
+  return {mushroom(), mushroom(), mushroom(), mushroom(), mushroom(), mushroom()}
+end
+
+local function series29()
+  return {cheddar(), cheddar()}
+end
+
+local function series30()
+  return {cheddar(), cheddar(), cheddar(), cheddar(), cheddar(), cheddar()}
+end
+
 
 local function createSeries()
   return {
@@ -96,6 +169,30 @@ local function createSeries()
     series10(),
     series11(),
     series12(),
+    series13(),
+    series14(),
+    series15(),
+    series16(),
+    {},
+    series17(),
+    {},
+    series18(),
+    series19(),
+    series20(),
+    {},
+    series21(),
+    series22(),
+    series23(),
+    {},
+    series24(),
+    series25(),
+    series26(),
+    {},
+    series27(),
+    {},
+    series28(),
+    series29(),
+    series30(),
   }
 end
 
