@@ -1,4 +1,5 @@
 local path = require('lib.path')
+local animation = require('lib.animation')
 local extract = require('extract')
 
 local draw = {}
@@ -94,6 +95,25 @@ end
 function draw.bullets(graphics, bullets)
   for __, bullet in pairs(bullets) do
     if not bullet.touched then
+
+      local red = {172, 50, 50}
+      local yellow = {248, 227, 113}
+      for i, particle in pairs(bullet.particles) do
+        local color = {0, 0, 0}
+        for c = 1, 3 do
+          color[c] = animation.lerp(red[c], yellow[c], i / extract.CANDLE_PARTICLES_COUNT)
+        end
+
+        color[#color + 1] = 50 + i * 10
+        love.graphics.setColor(unpack(color))
+        love.graphics.rectangle(
+          'fill',
+          extract.MARGIN_LEFT + extract.SIZE * extract.SCALE * (particle.col - 1) + extract.SCALE,
+          extract.MARGIN_TOP + extract.SIZE * extract.SCALE * (particle.row - 1) + extract.SCALE,
+          8, 8
+        )
+      end
+
       love.graphics.setColor(172, 50, 50, 255)
       love.graphics.rectangle(
         'fill',

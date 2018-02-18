@@ -16,6 +16,7 @@ extract.POSTURE_FRONT = 'posture_front'
 extract.POSTURE_BACK = 'posture_back'
 extract.POSTURE_LEFT = 'posture_left'
 extract.POSTURE_RIGHT = 'posture_right'
+extract.CANDLE_PARTICLES_COUNT = 5
 
 function extract.mobScreenState(mob)
   local startCursor = 0.4

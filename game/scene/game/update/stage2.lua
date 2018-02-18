@@ -70,12 +70,19 @@ function update.oneBullet(bullet, candle, state, dt)
     colDirection = -1
   end
 
+  local particles = {unpack(bullet.particles)}
+  particles[#particles + 1] = bullet.tile
+  if #particles > extract.CANDLE_PARTICLES_COUNT then
+    table.remove(particles, 1)
+  end
+
   return merge(bullet, {
     touched = (oppositeDistance < 0.05) and (adjacentDistance < 0.05),
     tile = {
       row = bullet.tile.row + moveDistance * math.sin(shootAngle) * rowDirection,
       col = bullet.tile.col + moveDistance * math.cos(shootAngle) * colDirection
-    }
+    },
+    particles = particles
   })
 end
 
@@ -90,7 +97,8 @@ function update.bullets(bullets, candle, state, dt)
       newBullets[#newBullets + 1] = {
         touched = false,
         tile = {row = candle.tile.row - 1, col = candle.tile.col},
-        mobId = mobsIds[1]
+        mobId = mobsIds[1],
+        particles = {}
       }
     end
   end
@@ -148,6 +156,7 @@ function update.pizza(state)
 
   local slices = {unpack(state.pizza.slices)}
   while #slices > remainingSlices do
+    math.randomseed(os.time())
     table.remove(slices, math.random(#slices))
   end
 
