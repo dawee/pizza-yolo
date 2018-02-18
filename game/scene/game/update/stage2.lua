@@ -94,7 +94,7 @@ function update.oneBullet(bullet, candle, state, dt)
 end
 
 function update.bullets(bullets, candle, state, dt)
-  if extract.isGameOver(state) then
+  if extract.isGameStopped(state) then
     return bullets
   end
 
@@ -126,7 +126,7 @@ function update.candle(candle, state, dt)
 end
 
 function update.candles(updateCandle, stateCandles, state, dt)
-  if extract.isGameOver(state) then
+  if extract.isGameStopped(state) then
     return stateCandles
   end
 
@@ -181,7 +181,7 @@ function update.pizza(state)
 end
 
 function update.ui(state)
-  if extract.isGameOver(state) then
+  if extract.isGameStopped(state) then
     return state.ui
   end
 
@@ -210,7 +210,7 @@ function update.ui(state)
 end
 
 function update.hover(state)
-  if extract.isGameOver(state) then
+  if extract.isGameStopped(state) then
     return state.hover
   end
 

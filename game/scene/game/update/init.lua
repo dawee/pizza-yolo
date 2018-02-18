@@ -12,7 +12,7 @@ local update = {}
 update.all = pipe(unpack(stages))
 
 function update.navigation(navigation, game, dt)
-  if extract.clicked(game.scene.state) and extract.isGameOver(game.scene.state) then
+  if extract.clicked(game.scene.state) and extract.isGameStopped(game.scene.state) then
     return merge(navigation, {scene = 'mainMenu'})
   end
 
