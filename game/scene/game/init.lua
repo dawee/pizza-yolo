@@ -1,5 +1,6 @@
 local draw = require('scene.game.draw')
 local update = require('scene.game.update')
+local createSeries = require('scene.game.series')
 local merge = require('lib.merge')
 
 local scene = {}
@@ -25,46 +26,7 @@ function scene.load(game)
           cursor = 0,
           velocity = 0.1
         },
-        series = {
-          {
-            {
-              lives = 8,
-              velocity = 0.8,
-            },
-            {
-              lives = 8,
-              velocity = 0.8,
-            },
-          },
-          {
-            {
-              lives = 8,
-              velocity = 0.8,
-            },
-            {
-              lives = 8,
-              velocity = 0.8,
-            },
-            {
-              lives = 8,
-              velocity = 0.8,
-            },
-          },
-          {
-            {
-              lives = 8,
-              velocity = 0.8,
-            },
-            {
-              lives = 8,
-              velocity = 0.8,
-            },
-            {
-              lives = 8,
-              velocity = 0.8,
-            },
-          }
-        }
+        series = createSeries()
       },
       mobs = {},
       pizza = {
