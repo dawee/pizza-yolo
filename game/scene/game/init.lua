@@ -76,37 +76,37 @@ function scene.load(game)
 
   gameScene.graphics.mozza = {
     front = {
-      love.graphics.newImage('asset/mozza/mozza-front1.png'),
-      love.graphics.newImage('asset/mozza/mozza-front2.png'),
-      love.graphics.newImage('asset/mozza/mozza-front3.png')
+      love.graphics.newImage('asset/mob/mozza-front1.png'),
+      love.graphics.newImage('asset/mob/mozza-front2.png'),
+      love.graphics.newImage('asset/mob/mozza-front3.png')
     },
     back = {
-      love.graphics.newImage('asset/mozza/mozza-back1.png'),
-      love.graphics.newImage('asset/mozza/mozza-back2.png'),
-      love.graphics.newImage('asset/mozza/mozza-back3.png'),
+      love.graphics.newImage('asset/mob/mozza-back1.png'),
+      love.graphics.newImage('asset/mob/mozza-back2.png'),
+      love.graphics.newImage('asset/mob/mozza-back3.png'),
     },
     profile = {
-      love.graphics.newImage('asset/mozza/mozza-profile1.png'),
-      love.graphics.newImage('asset/mozza/mozza-profile2.png'),
-      love.graphics.newImage('asset/mozza/mozza-profile3.png'),
+      love.graphics.newImage('asset/mob/mozza-profile1.png'),
+      love.graphics.newImage('asset/mob/mozza-profile2.png'),
+      love.graphics.newImage('asset/mob/mozza-profile3.png'),
     }
   }
 
   gameScene.graphics.cheddar = {
     front = {
-      love.graphics.newImage('asset/mozza/cheddar-front1.png'),
-      love.graphics.newImage('asset/mozza/cheddar-front2.png'),
-      love.graphics.newImage('asset/mozza/cheddar-front3.png')
+      love.graphics.newImage('asset/mob/cheddar-front1.png'),
+      love.graphics.newImage('asset/mob/cheddar-front2.png'),
+      love.graphics.newImage('asset/mob/cheddar-front3.png')
     },
     back = {
-      love.graphics.newImage('asset/mozza/cheddar-back1.png'),
-      love.graphics.newImage('asset/mozza/cheddar-back2.png'),
-      love.graphics.newImage('asset/mozza/cheddar-back3.png'),
+      love.graphics.newImage('asset/mob/cheddar-back1.png'),
+      love.graphics.newImage('asset/mob/cheddar-back2.png'),
+      love.graphics.newImage('asset/mob/cheddar-back3.png'),
     },
     profile = {
-      love.graphics.newImage('asset/mozza/cheddar-profile1.png'),
-      love.graphics.newImage('asset/mozza/cheddar-profile2.png'),
-      love.graphics.newImage('asset/mozza/cheddar-profile3.png'),
+      love.graphics.newImage('asset/mob/cheddar-profile1.png'),
+      love.graphics.newImage('asset/mob/cheddar-profile2.png'),
+      love.graphics.newImage('asset/mob/cheddar-profile3.png'),
     }
   }
 
