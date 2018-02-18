@@ -187,7 +187,7 @@ function update.ui(state)
   end
 
   local buttons = state.ui.towers
-  local available = extract.towersAvailable(state.mobs, state.candles) > 0
+  local available = extract.moneyAvailable(state) > 0
   local towers = {unpack(buttons)}
   for i, button in pairs(buttons) do
     towers[i].available = available

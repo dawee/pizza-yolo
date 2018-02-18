@@ -38,6 +38,28 @@ function extract.aliveMobs(state)
   return aliveMobs
 end
 
+function extract.spentMoney(state)
+  local spentMoney = 0
+
+  for __, candle in pairs(state.candles) do
+    spentMoney = spentMoney + candle.price
+  end
+
+  return spentMoney
+end
+
+function extract.deadMobs(state)
+  local deadMobs = {}
+
+  for __, mob in pairs(state.mobs) do
+    if mob.lives == 0 then
+      deadMobs[#deadMobs + 1] = mob
+    end
+  end
+
+  return deadMobs
+end
+
 function extract.isLevelCompleted(state)
   return (#state.pizza.slices > 0)
     and (state.schedule.tick.idx >= #state.schedule.series)
@@ -148,20 +170,17 @@ function extract.canAddTower(hover, map, candles)
   return not (isPath or isTower)
 end
 
-function extract.towersAvailable(mobs, candles)
-  local deadMobs = 0
-  for _, mob in pairs(mobs) do
-    if mob.lives < 1 then
-      deadMobs = deadMobs + 1
-    end
+function extract.moneyAvailable(state)
+  local initialMoney = 2
+
+  if #state.candles == 0 then
+    return initialMoney
   end
 
-  if #candles == 0 then
-    return 1
-  else
-    return deadMobs - #candles
-  end
+  local spentMoney = extract.spentMoney(state)
+  local deadMobsCount = #(extract.deadMobs(state))
 
+  return deadMobsCount - spentMoney + initialMoney
 end
 
 return extract
