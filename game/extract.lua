@@ -1,4 +1,5 @@
 local animation = require('animation')
+local path = require('path')
 
 local extract = {}
 
@@ -78,6 +79,24 @@ function extract.isTower(tile, candles)
     end
   end
   return false
+end
+
+function extract.isInMap(tile, map)
+  if tile.row > 0 and tile.row <= #map.tiles then
+    if tile.col > 0 and tile.col <= #map.tiles[1] then
+      return true
+    end
+  end
+  return false
+end
+
+function extract.canAddTower(hover, map, candles)
+  if not extract.isInMap(hover, map) then
+    return false
+  end
+  local isPath = map.tiles[hover.row][hover.col] == path.PATH_TYPE
+  local isTower = extract.isTower(hover, candles)
+  return not (isPath or isTower)
 end
 
 return extract

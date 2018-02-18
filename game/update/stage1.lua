@@ -119,6 +119,30 @@ function update.candle(candle, state, dt)
   })
 end
 
+function update.candles(updateCandle, stateCandles, state, dt)
+  local candles = mapUpdate(updateCandle, stateCandles, state, dt)
+  local selectedTower = extract.selectedTower(state.ui.towers)
+  if love.mouse.isDown(1) and not (selectedTower == nil) then
+    if extract.canAddTower(state.hover, state.map, candles) then
+      candles[#candles + 1] = {
+        radius = 2,
+        burn = {
+          velocity = 2,
+          cursor = 0
+        },
+        shoot = {
+          velocity = 2.5,
+          cursor = 0
+        },
+        bulletVelocity = 5,
+        bullets = {},
+        tile = {row = state.hover.row, col = state.hover.col}
+      }
+    end
+  end
+  return candles
+end
+
 function update.pizza(state)
   local eatenSlices = 0
   for _, mob in pairs(state.mobs) do
@@ -187,7 +211,7 @@ end
 
 function update.all(state, dt)
   return merge(state, {
-    candles = mapUpdate(update.candle, state.candles, state, dt),
+    candles = update.candles(update.candle, state.candles, state, dt),
     mobs = mapUpdate(update.mob, state.mobs, state, dt),
     pizza = update.pizza(state),
     ui = update.ui(state),

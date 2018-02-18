@@ -144,29 +144,22 @@ end
 
 function draw.hover(graphics, state)
   local tower = extract.selectedTower(state.ui.towers)
-  if tower == nil then
+  if tower == nil or not extract.isInMap(state.hover, state.map) then
     return state.hover
   end
-  if state.hover.row > 0 and state.hover.row <= #state.map.tiles then
-    if state.hover.col > 0 and state.hover.col <= #state.map.tiles[1] then
-      love.graphics.setColor(0, 255, 0, 255)
+  love.graphics.setColor(255, 0, 0, 255)
 
-      local isPath = state.map.tiles[state.hover.row][state.hover.col] == path.PATH_TYPE
-      local isTower = extract.isTower(state.hover, state.candles)
-
-      if isPath or isTower then
-        love.graphics.setColor(255, 0, 0, 255)
-      end
-
-      love.graphics.rectangle(
-        'line',
-        extract.MARGIN_LEFT + extract.SIZE * extract.SCALE * (state.hover.col - 1) - extract.SIZE * extract.SCALE / 2,
-        extract.MARGIN_TOP + extract.SIZE * extract.SCALE * (state.hover.row - 1) - extract.SIZE * extract.SCALE / 2,
-        extract.SIZE * extract.SCALE,
-        extract.SIZE * extract.SCALE
-      )
-    end
+  if extract.canAddTower(state.hover, state.map, state.candles) then
+    love.graphics.setColor(0, 255, 0, 255)
   end
+
+  love.graphics.rectangle(
+    'line',
+    extract.MARGIN_LEFT + extract.SIZE * extract.SCALE * (state.hover.col - 1) - extract.SIZE * extract.SCALE / 2,
+    extract.MARGIN_TOP + extract.SIZE * extract.SCALE * (state.hover.row - 1) - extract.SIZE * extract.SCALE / 2,
+    extract.SIZE * extract.SCALE,
+    extract.SIZE * extract.SCALE
+  )
 end
 
 function draw.all(graphics, state)
