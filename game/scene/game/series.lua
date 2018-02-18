@@ -19,8 +19,16 @@ end
 local function mushroom()
   return {
     type = 'mushroom',
-    lives = 60,
+    lives = 70,
     velocity = 1.6,
+  }
+end
+
+local function cheddar()
+  return {
+    type = 'cheddar',
+    lives = 200,
+    velocity = 0.8,
   }
 end
 
@@ -59,11 +67,19 @@ local function series8()
 end
 
 local function series9()
-  return {olive(), olive(), mushroom()}
+  return {mushroom()}
 end
 
 local function series10()
+  return {mushroom(), mushroom()}
+end
+
+local function series11()
   return {olive(), olive(), mushroom()}
+end
+
+local function series12()
+  return {cheddar()}
 end
 
 local function createSeries()
@@ -77,7 +93,9 @@ local function createSeries()
     series7(),
     series8(),
     series9(),
-    series10()
+    series10(),
+    series11(),
+    series12(),
   }
 end
 
