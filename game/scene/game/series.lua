@@ -27,7 +27,7 @@ end
 local function cheddar()
   return {
     type = 'cheddar',
-    lives = 800,
+    lives = 5000,
     velocity = 0.8,
   }
 end
@@ -51,11 +51,11 @@ local function series4()
 end
 
 local function series5()
-  return {mozza(), mozza(), olive()}
+  return {mozza(), mozza(), mozza(), olive()}
 end
 
 local function series6()
-  return {mozza(), mozza(), olive()}
+  return {mozza(), mozza(), mozza(), olive()}
 end
 
 local function series7()
@@ -155,13 +155,44 @@ local function series30()
 end
 
 local function series31()
-  return {cheddar(), cheddar()}
+  return {cheddar(), cheddar(), mozza(), mozza(), mozza()}
 end
 
 local function series32()
-  return {cheddar(), cheddar(), cheddar(), cheddar()}
+  return {cheddar(), cheddar(), mozza(), mozza(), mozza()}
 end
 
+local function series33()
+  return {olive(), olive(), olive(), olive(), olive(), olive()}
+end
+
+local function series34()
+  return {mushroom(), mushroom(), mushroom(), mushroom(), mushroom(), mushroom()}
+end
+
+local function series35()
+  return {cheddar(), cheddar(), cheddar()}
+end
+
+local function series36()
+  return {cheddar(), cheddar(), cheddar(), mozza(), mozza(), mozza()}
+end
+
+local function series37()
+  return {cheddar(), cheddar(), cheddar(), mozza(), mozza(), mozza()}
+end
+
+local function series38()
+  return {olive(), olive(), olive(), olive(), olive(), olive()}
+end
+
+local function series39()
+  return {mushroom(), mushroom(), mushroom(), mushroom(), mushroom(), mushroom()}
+end
+
+local function series40()
+  return {cheddar(), cheddar(), cheddar(), cheddar(), cheddar(), cheddar()}
+end
 
 local function createSeries()
   return {
@@ -175,35 +206,36 @@ local function createSeries()
     series8(),
     series9(),
     series10(),
-    {},
     series11(),
     series12(),
     series13(),
     series14(),
-    {},
     series15(),
     series16(),
     series17(),
-    {},
     series18(),
     series19(),
     series20(),
-    {},
     series21(),
     series22(),
     series23(),
-    {},
     series24(),
     series25(),
-    {},
     series26(),
     series27(),
-    {},
     series28(),
     series29(),
     series30(),
     series31(),
     series32(),
+    series33(),
+    series34(),
+    series35(),
+    series36(),
+    series37(),
+    series38(),
+    series39(),
+    series40(),
   }
 end
 

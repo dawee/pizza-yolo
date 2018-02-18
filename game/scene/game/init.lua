@@ -26,7 +26,7 @@ function scene.load(game)
         tick = {
           idx = 1,
           cursor = 0,
-          velocity = 0.08
+          velocity = 0.04
         },
         series = createSeries()
       },
@@ -94,7 +94,7 @@ function scene.load(game)
               cursor = 0
             },
             bulletVelocity = 2,
-            damages = 6
+            damages = 7
           },
           {
             type = 'blueCandle',
@@ -128,11 +128,11 @@ function scene.load(game)
             },
             shoot = {
               idx = 0,
-              velocity = 0.4,
+              velocity = 0.5,
               cursor = 0
             },
-            bulletVelocity = 1.2,
-            damages = 100
+            bulletVelocity = 2,
+            damages = 500
           }
         }
       },
