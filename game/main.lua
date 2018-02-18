@@ -9,7 +9,7 @@ local game = {
     candles = {},
     schedule = {
       tick = {
-        idx = 0,
+        idx = 1,
         cursor = 0,
         velocity = 0.1
       },

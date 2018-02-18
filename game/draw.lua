@@ -68,6 +68,18 @@ function draw.mob(graphics, mob)
   end
 
   drawAt(images[screenState.bumpState], screenState.row, screenState.col, 1, scaleX)
+
+  -- mob life bar
+  local remainingLife = mob.lives / mob.maxLives
+  local barWidth = (extract.SIZE - 3) * extract.SCALE
+  local barX = extract.MARGIN_LEFT + extract.SIZE * extract.SCALE * (screenState.col - 1)
+  local barY = extract.MARGIN_TOP + extract.SIZE * extract.SCALE * (screenState.row - 1)
+  barX = barX - barWidth / 2
+  barY = barY + extract.SIZE * extract.SCALE / 2 + 4
+  love.graphics.setColor(0, 0, 0, 255)
+  love.graphics.rectangle('fill', barX, barY, barWidth, 4)
+  love.graphics.setColor(0, 255, 0, 255)
+  love.graphics.rectangle('fill', barX, barY, barWidth * remainingLife, 4)
 end
 
 function draw.mobs(graphics, state)

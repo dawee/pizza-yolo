@@ -23,6 +23,7 @@ function update.mobs(mobs, state, dt)
     newMobs[#newMobs + 1] = {
       id = uuid(),
       lives = template.lives,
+      maxLives = template.lives,
       velocity = template.velocity,
       previousTile = {row = 7 - index, col = 3},
       tile = {row = 8 - index, col = 3},
