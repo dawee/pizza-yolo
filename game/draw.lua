@@ -76,7 +76,7 @@ function draw.mob(graphics, mob)
   local barY = extract.MARGIN_TOP + extract.SIZE * extract.SCALE * (screenState.row - 1)
   barX = barX - barWidth / 2
   barY = barY + extract.SIZE * extract.SCALE / 2 + 4
-  love.graphics.setColor(0, 0, 0, 255)
+  love.graphics.setColor(255, 0, 0, 255)
   love.graphics.rectangle('fill', barX, barY, barWidth, 4)
   love.graphics.setColor(0, 255, 0, 255)
   love.graphics.rectangle('fill', barX, barY, barWidth * remainingLife, 4)
