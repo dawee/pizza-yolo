@@ -130,6 +130,24 @@ function scene.load(game)
     }
   }
 
+  gameScene.graphics.cheddar = {
+    front = {
+      love.graphics.newImage('asset/mozza/cheddar-front1.png'),
+      love.graphics.newImage('asset/mozza/cheddar-front2.png'),
+      love.graphics.newImage('asset/mozza/cheddar-front3.png')
+    },
+    back = {
+      love.graphics.newImage('asset/mozza/cheddar-back1.png'),
+      love.graphics.newImage('asset/mozza/cheddar-back2.png'),
+      love.graphics.newImage('asset/mozza/cheddar-back3.png'),
+    },
+    profile = {
+      love.graphics.newImage('asset/mozza/cheddar-profile1.png'),
+      love.graphics.newImage('asset/mozza/cheddar-profile2.png'),
+      love.graphics.newImage('asset/mozza/cheddar-profile3.png'),
+    }
+  }
+
   gameScene.graphics.candle = {
     love.graphics.newImage('asset/candle/candle1.png'),
     love.graphics.newImage('asset/candle/candle2.png'),
