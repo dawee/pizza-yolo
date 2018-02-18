@@ -20,6 +20,7 @@ function scene.load(game)
       }
     },
     state = {
+      mouseDown = love.mouse.isDown(1),
       candles = {},
       schedule = {
         tick = {

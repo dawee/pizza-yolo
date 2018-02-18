@@ -7,6 +7,10 @@ local cycle = require('lib.cycle')
 local update = {}
 
 function update.mob(mob, state, dt)
+  if extract.isGameStopped(state) then
+    return mob
+  end
+
   local anim = mob.anim
   if anim.cursor < 1 then
     anim = merge(mob.anim, {
@@ -159,7 +163,7 @@ function update.pizza(state)
   end
 
   local slices = {unpack(state.pizza.slices)}
-  while #slices > 0 and (#slices > remainingSlices) do
+  while (#slices > 0) and (#slices > remainingSlices) do
     math.randomseed(os.time())
     table.remove(slices, math.random(#slices))
   end

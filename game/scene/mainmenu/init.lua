@@ -28,6 +28,7 @@ function scene.load(game)
       }
     },
     state = {
+      mouseDown = love.mouse.isDown(1),
       hover = {
         x = 0,
         y = 0
